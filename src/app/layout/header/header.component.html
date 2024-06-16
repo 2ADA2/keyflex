@@ -1,0 +1,17 @@
+<header>
+  <h3>K-Flex</h3>
+  <nav [ngClass]="{
+   home:href==='/',
+   training:href==='/training',
+   play:href==='/play',
+   about:href==='/about',
+   user:href==='/profile'
+   }">
+    <a routerLink="/" [ngClass]="{active:href === '/'}">Главная</a>
+    <a routerLink="/training" [ngClass]="{active:href === '/training'}">Тренировка</a>
+    <a routerLink="/play" [ngClass]="{active:href === '/play'}">Играть</a>
+    <a routerLink="/about" [ngClass]="{active:href === '/about'}">Проект</a>
+    <a routerLink="/profile" [ngClass]="{active:href === '/profile'}">Профиль</a>
+  </nav>
+  <nav class="nav-compact">=</nav>
+</header>

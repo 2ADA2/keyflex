@@ -1,0 +1,59 @@
+footer{
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+  padding:60px 10% 20px 10%;
+  background: #1c1c1c;
+  column-gap: 10px;
+
+  & section{
+    display: flex;
+    flex-direction: column;
+    color:white;
+    gap:4px;
+
+    & h5{
+      font-size: 24px;
+      font-family: "JetBrains Mono Medium";
+      font-weight: 100;
+
+      &::after{
+        content: "";
+        display: block;
+        width: 90%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.5);
+        margin-bottom: 20px;
+        margin-top: 4px;
+      }
+    }
+
+    & a{
+      color: #dadada;
+      font-family: "JetBrains Mono Thin";
+      width: auto;
+      align-self: start;
+
+      &:hover{
+        color: white;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  & .footer-alert{
+    & p{
+      font-family: "JetBrains Mono Thin";
+    }
+    margin-top: 40px;
+    grid-column: 1/4;
+
+    &:before{
+      width: 100%;
+      content: "";
+      display: block;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.5);
+      margin-bottom: 10px;
+    }
+  }
+}

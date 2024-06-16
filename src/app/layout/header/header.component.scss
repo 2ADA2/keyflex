@@ -1,0 +1,77 @@
+header{
+  display: flex;
+  padding: 10px 10%;
+  padding-left: 15%;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  overflow: hidden;
+  background: #efefef;
+
+  & h3{
+    cursor: default;
+    user-select: none;
+    font-size: 36px;
+  }
+
+  & .nav-compact{
+    display: none;
+  }
+
+  & nav{
+    display: flex;
+    gap:40px;
+    position: relative;
+    align-items: center;
+    height: 100%;
+
+    & a {
+      color: #606060;
+      font-size: 22px;
+
+      &:hover{
+        color: #000;
+      }
+    }
+
+    & .active{
+      color: #000000;
+    }
+
+    &:after{
+      content: "";
+      display: block;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: white;
+      bottom: -22px;
+      rotate: 45deg;
+      left:35px;
+      transition-duration: 300ms;
+    }
+
+  }
+
+  & .training{
+    &:after{
+      left:187px
+    }
+  }
+
+  & .play{
+    &:after{
+      left:332px
+    }
+  }
+  & .about{
+    &:after{
+      left:451px
+    }
+  }
+  & .user{
+    &:after{
+      left:577px
+    }
+  }
+}

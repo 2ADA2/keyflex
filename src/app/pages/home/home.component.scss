@@ -1,3 +1,233 @@
-main{
+main {
   min-height: 100vh;
+}
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 10%;
+  align-items: center;
+  gap: 20px;
+
+  & h1 {
+    font-size: 200px;
+    position: relative;
+
+  }
+
+  & .header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    & span {
+      font-size: 32px;
+      border-left: 4px solid #000000;
+      padding-left: 20px;
+      display: block;
+      height: 40px;
+    }
+  }
+}
+
+.keys {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  & .line {
+    display: flex;
+    gap: 2px;
+
+    & .key {
+      display: flex;
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      border-radius: 5px;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      transition-duration: 300ms;
+
+      & sup {
+        position: relative;
+        bottom: 10px;
+        left: 5px;
+      }
+
+      & .sup2 {
+        position: relative;
+        bottom: 20px;
+        left: 10px;
+      }
+    }
+
+    & .sys {
+      border: 1px solid black;
+      border-radius: 5px;
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    & .caps {
+      width: 120px;
+    }
+
+    & .enter {
+      width: 80px;
+    }
+
+    & .lshift {
+      width: 130px;
+    }
+
+    & .rshift {
+      width: 122px;
+    }
+
+    & .space {
+      width: 400px;
+      height: 50px;
+      border: 1px solid black;
+      border-radius: 5px;
+      margin: auto;
+    }
+
+    & .active {
+      color: white;
+      background: black;
+    }
+
+  }
+}
+
+.home-profit-container {
+  margin-top: 80px;
+  background-color: #f1f1f1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  padding: 40px 10%;
+  grid-column-gap: 100px;
+
+  & h2 {
+    grid-row: 1/3;
+    grid-column: 1/4;
+    margin-bottom: 40px;
+    font-size: 42px;
+  }
+
+  & .text-container {
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: relative;
+
+    & svg{
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      border: 1px solid black;
+      border-radius: 5px;
+      cursor: pointer;
+      fill: #d00000;
+      user-select: none;
+
+      &:hover{
+        fill: #ff0000;
+      }
+      &:active{
+        fill: #c70000;
+      }
+    }
+
+    & span {
+      position: absolute;
+      bottom: 0;
+      right: 50px;
+      width: 30000px;
+      display: inline;
+      text-align: end;
+      font-size: 36px;
+    }
+  }
+
+  & .key-container {
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    user-select: none;
+  }
+
+  & .animated-key-container{
+      animation: key-animation 100ms infinite;
+  }
+
+  & .key-container-end{
+    animation: key-animation2 300ms both;
+  }
+
+}
+
+@keyframes key-animation {
+  0%{
+    opacity: 0;
+    font-size: 30px;
+  }
+  50%{
+    opacity: 1;
+    font-size: 40px;
+  }
+  100%{
+    opacity: 0;
+    font-size: 50px;
+  }
+}
+@keyframes key-animation2 {
+  0%{
+    opacity: 0;
+    font-size: 30px;
+  }
+  50%{
+    opacity: 1;
+    font-size: 40px;
+  }
+  100%{
+    opacity: 0;
+    font-size: 50px;
+  }
+}
+
+.home-profit-description{
+  text-align: center;
+  font-size: clamp(20px, 1.3vw, 30px);
+  margin: 40px 0;
+}
+
+.home-profit-text{
+  & span{
+    font-size: 24px;
+    font-family: "JetBrains Mono";
+    margin: 20px 0 5px 0;
+    display: block;
+  }
+  & span:first-child{
+    margin-top:0 ;
+  }
 }

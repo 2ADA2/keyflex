@@ -21,6 +21,7 @@ export class HeaderComponent {
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.href = e.url
+        window.scrollTo(0, 0)
       }
     })
   }

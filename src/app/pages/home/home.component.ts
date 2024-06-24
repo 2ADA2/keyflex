@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import {NgClass} from "@angular/common";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faChartLine, faCoffee, faDumbbell, faPeopleGroup, faTrophy} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    FaIconComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -67,4 +70,8 @@ export class HomeComponent {
     this.intervalEnd2 = true
   }
 
+  protected readonly faDumbbell = faDumbbell;
+  protected readonly faPeopleGroup = faPeopleGroup;
+  protected readonly faTrophy = faTrophy;
+  protected readonly faChartLine = faChartLine;
 }

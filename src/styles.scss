@@ -9,3 +9,30 @@ a{
   text-decoration: none;
   color:black;
 }
+
+.main-header{
+  padding: 40px 15%;
+  & h2{
+    border-left: 10px solid black;
+    padding-left: 40px;
+    font-size: 64px;
+  }
+  & span{
+    padding-left: 30px;
+    font-size: 30px;
+    margin-top:10px;
+    display: block;
+  }
+}
+
+
+.main-container{
+  padding: 40px 15%;
+}
+.main-section{
+  margin-top: 40px;
+
+  & h3{
+    font-size: 30px;
+  }
+}

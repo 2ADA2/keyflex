@@ -3,74 +3,7 @@
     <h1>Keyflex</h1>
     <div class="header-container">
       <span>{{ printed }}</span>
-      <div class="keys">
-        <div class="line">
-          <div class="key">Ё</div>
-          <div class="key sup">1<sup>!</sup></div>
-          <div class="key sup">2<sup>"</sup></div>
-          <div class="key sup">3<sup>№</sup></div>
-          <div class="key sup">4<sup>;</sup></div>
-          <div class="key sup">5<sup>%</sup></div>
-          <div class="key sup">6<sup>:</sup></div>
-          <div class="key sup">7<sup>?</sup></div>
-          <div class="key sup">8<sup>*</sup></div>
-          <div class="key sup">9<sup>(</sup></div>
-          <div class="key sup">0<sup>)</sup></div>
-          <div class="key sup">-<sup class="sup2">_</sup></div>
-          <div class="key sup">=<sup>+</sup></div>
-          <div class="sys backspace off">Backspace</div>
-        </div>
-        <div class="line">
-          <div class="sys tab">Tab</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('й')}">Й</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('ц')}">Ц</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('у')}">У</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('к')}">К</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('е')}">Е</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('н')}">Н</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('г')}">Г</div>
-          <div class="key sel" [ngClass]="{active:key.toLowerCase().includes('ш')}">Ш</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('щ')}">Щ</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('з')}">З</div>
-          <div class="key sup" [ngClass]="{active:key.toLowerCase().includes('х')}">Х</div>
-          <div class="key sup" [ngClass]="{active:key.toLowerCase().includes('ъ')}">Ъ</div>
-          <div class="key sup" [ngClass]="{active:key.toLowerCase().includes('\\')}">\<sup>/</sup></div>
-        </div>
-        <div class="line">
-          <div class="sys caps">Caps Lock</div>
-          <div class="key hand" [ngClass]="{active:key.toLowerCase().includes('ф')}">Ф</div>
-          <div class="key hand" [ngClass]="{active:key.toLowerCase().includes('ы')}">Ы</div>
-          <div class="key hand" [ngClass]="{active:key.toLowerCase().includes('в')}">В</div>
-          <div class="key hand start" [ngClass]="{active:key.toLowerCase().includes('а')}">А</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('п')}">П</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('р')}">Р</div>
-          <div class="key hand start" [ngClass]="{active:key.toLowerCase().includes('о')}">О</div>
-          <div class="key hand" [ngClass]="{active:key.toLowerCase().includes('л')}">Л</div>
-          <div class="key hand" [ngClass]="{active:key.toLowerCase().includes('д')}">Д</div>
-          <div class="key hand sup" [ngClass]="{active:key.toLowerCase().includes('ж')}">Ж</div>
-          <div class="key sup" [ngClass]="{active:key.toLowerCase().includes('з')}">Э</div>
-          <div class="sys enter">Enter ¶</div>
-        </div>
-        <div class="line">
-          <div class="sys lshift">Shift</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('я')}">Я</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('ч')}">Ч</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('с')}">С</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('м')}">М</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('и')}">И</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('т')}">Т</div>
-          <div class="key" [ngClass]="{active:key.toLowerCase().includes('ь')}">Ь</div>
-          <div class="key sup" [ngClass]="{active:key.toLowerCase().includes('б')}">Б</div>
-          <div class="key sup" [ngClass]="{active:key.toLowerCase().includes('ю')}">Ю</div>
-          <div class="key sup">.<sup>,</sup></div>
-          <div class="sys rshift">Shift</div>
-        </div>
-        <div class="line">
-          <div class="space" [ngClass]="{active:key.toLowerCase().includes(' ')}">
-            <div></div>
-          </div>
-        </div>
-      </div>
+      <app-keyboard key = {{key}}></app-keyboard>
     </div>
   </section>
 

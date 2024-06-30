@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faChartLine, faCoffee, faDumbbell, faPeopleGroup, faTrophy} from "@fortawesome/free-solid-svg-icons";
+import {KeyboardComponent} from "../../components/keyboard/keyboard.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     NgClass,
-    FaIconComponent
+    FaIconComponent,
+    KeyboardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

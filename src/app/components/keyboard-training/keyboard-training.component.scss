@@ -1,3 +1,29 @@
+.alert{
+  animation: alert-show 0.3s both;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffdcdc;
+  display: inline-block;
+  margin: 5px 0;
+}
+.hide{
+  display: none;
+}
+
+@keyframes alert-show {
+  0%{
+    opacity: 0;
+    background-color: #ffffff;
+  }
+  50%{
+    opacity: 1;
+    background: #ffbbbb;
+  }
+  100%{
+    opacity: 1;
+    background-color: #ffdcdc;
+  }
+}
 .keys {
   display: inline-flex;
   flex-direction: column;

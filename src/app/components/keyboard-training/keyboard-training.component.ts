@@ -12,4 +12,15 @@ import {NgClass} from "@angular/common";
 })
 export class KeyboardTrainingComponent {
   @Input() key : string[] | string = []
+  public isCapsOn : boolean = false
+
+  ngOnInit (): void {
+    window.addEventListener('keydown', (e: KeyboardEvent) => {
+      this.isCapsOn = e.getModifierState("CapsLock")
+    })
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('keydown', (e: KeyboardEvent) => {})
+  }
 }

@@ -1,2 +1,25 @@
+<main>
+  <div class="main-container">
+    <div class = "info-panel">
+      <div>Symbols: {{symbols}}</div>
+      <div>Words: {{Math.floor(symbols/5)}}</div>
+      <div>time : 0s</div>
+    </div>
+    <div class="input-container">
+      <div class="text-container">
+        {{ text.join(" ") }}
+      </div>
+      <input
+        type="text"
+        [value]="value"
+        (input)="setValue($event)"
+        [ngClass]="{
+        wrong : text[0].slice(0, value.length) !== value
+        }"
+      >
+    </div>
 
-<app-keyboard-training key = {{key}}></app-keyboard-training>
+    <app-keyboard-training key={{key}}></app-keyboard-training>
+  </div>
+</main>
+

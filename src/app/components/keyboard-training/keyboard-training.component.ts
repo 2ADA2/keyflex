@@ -15,12 +15,14 @@ export class KeyboardTrainingComponent {
   public isCapsOn : boolean = false
 
   ngOnInit (): void {
-    window.addEventListener('keydown', (e: KeyboardEvent) => {
-      this.isCapsOn = e.getModifierState("CapsLock")
-    })
+    window.addEventListener('keydown', (e: KeyboardEvent) => this.checkCaps(e))
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('keydown', (e: KeyboardEvent) => {})
+    window.removeEventListener('keydown', (e:KeyboardEvent) => this.checkCaps(e))
+  }
+
+  checkCaps(e:KeyboardEvent){
+    this.isCapsOn = e.getModifierState("CapsLock")
   }
 }

@@ -1,7 +1,8 @@
-<div>
-  <div class="alert" [ngClass]="{hide: !isCapsOn}">Caps Lock Включен!</div>
-</div>
+
 <div class="keys">
+  <div>
+    <div class="alert" [ngClass]="{hide: !isCapsOn}">Caps Lock Включен!</div>
+  </div>
   <div class="line">
     <div class="key" [ngClass]="{active:key.includes('Backquote')}">Ё</div>
     <div class="key sup" [ngClass]="{active:key.includes('Digit1')}">1<sup>!</sup></div>

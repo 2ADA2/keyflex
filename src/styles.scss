@@ -18,14 +18,14 @@ a{
     font-size: 64px;
   }
   & span{
+    position: relative;
+    right:33px;
     padding-left: 30px;
     font-size: 30px;
     margin-top:10px;
     display: block;
   }
 }
-
-
 .main-container{
   padding: 40px 15%;
 }
@@ -34,5 +34,46 @@ a{
 
   & h3{
     font-size: 30px;
+  }
+}
+
+.info-container{
+  padding: 40px 15%;
+  margin: 40px auto;
+  background: rgb(239, 239, 239);
+
+  & h4{
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  & ul{
+    position: relative;
+    left: 40px;
+    margin: 10px 0;
+  }
+
+  & a{
+    cursor: pointer;
+    font-weight: 600;
+    &:hover{
+      text-decoration: underline;
+
+    }
+  }
+}
+
+button{
+  background: #1c1c1c;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  &:hover{
+    background: #313131;
+  }
+
+  &:active{
+    background: #000000;
   }
 }

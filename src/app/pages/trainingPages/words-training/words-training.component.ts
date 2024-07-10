@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {KeyboardComponent} from "../../../components/keyboard/keyboard.component";
 import {KeyboardTrainingComponent} from "../../../components/keyboard-training/keyboard-training.component";
@@ -6,6 +6,8 @@ import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
 import {generate} from "../../../functions/generate";
 import words from "../../../../../public/assets/json/standart.json"
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faCross, faX} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-words-training',
@@ -14,13 +16,16 @@ import words from "../../../../../public/assets/json/standart.json"
     KeyboardComponent,
     KeyboardTrainingComponent,
     FormsModule,
-    NgClass
+    NgClass,
+    FaIconComponent,
   ],
   templateUrl: './words-training.component.html',
   styleUrl: './words-training.component.scss'
 })
 
 export class WordsTrainingComponent {
+  @ViewChild("inputText", {static: true}) inputText!: ElementRef;
+
   public route: ActivatedRoute = inject(ActivatedRoute)
   public type: string = "standart"
   public key: string[] = []
@@ -32,11 +37,14 @@ export class WordsTrainingComponent {
   public wrongW: number = 0
   public rightW: number = 0
   public kombo: number = 0
+  public bestKombo: number = 0
 
   public time: number = 60
   public interval : number = 0
   public isStart :boolean = false;
   public isEnd:boolean = false
+
+  public isModal = false;
 
   constructor() {
     this.type = this.route.snapshot.params['type'];
@@ -67,6 +75,9 @@ export class WordsTrainingComponent {
       this.rightW = this.rightW + 1
       this.symbols = this.symbols + word.length
       this.kombo = this.kombo + 1
+      if(this.bestKombo < this.kombo) {
+        this.bestKombo = this.kombo
+      }
     } else{
       this.kombo = 0
       this.wrongW = this.wrongW + 1
@@ -117,6 +128,8 @@ export class WordsTrainingComponent {
 
     if(!this.time){
       this.isEnd = true;
+      this.isModal = true;
+      this.inputText.nativeElement.blur()
       clearInterval(this.interval)
       this.value = "конец"
     }
@@ -133,6 +146,10 @@ export class WordsTrainingComponent {
     }, 1000)
   }
 
+  setIsModal(){
+    this.isModal = false;
+  }
+
   restart(){
     this.text = generate(words.words, 300)
     this.time = 60
@@ -144,9 +161,13 @@ export class WordsTrainingComponent {
     this.wrongW = 0
     this.rightW = 0
     this.kombo = 0
+    this.bestKombo = 0
+    this.isModal = false
     clearInterval(this.interval)
   }
 
   protected readonly Math = Math;
   protected readonly words = words;
+  protected readonly faCross = faCross;
+  protected readonly faX = faX;
 }

@@ -3,6 +3,21 @@
     <h2>{{words.header}}</h2>
     <span>Сложность: {{words.level}}</span>
   </div>
+
+  <div class="modal-container" [ngClass]="{hide:!isModal}" (click)="setIsModal()">
+    <div class = "info-panel modal">
+      <fa-icon [icon]="faX" class="cross"></fa-icon>
+      <div class="info-time">
+        <h5>Слов в минуту: </h5>
+        <h5>{{ (symbolsPerMin/5).toFixed(2) }} свм</h5>
+      </div>
+      <div>Символов в минуту: {{ symbolsPerMin.toFixed(2) }} СВМ</div>
+      <div>Кол-во неверных слов: {{wrongW}} сл</div>
+      <div>Кол-во верных слов {{rightW}} сл</div>
+      <div>Лучшее комбо: {{bestKombo}} слов подряд</div>
+    </div>
+  </div>
+
   <section class = "info-container">
     <h4>Правила</h4>
     <p>Здесь приведены правила пользования вкратце, если вы впервые то почитайте внимательно:</p>
@@ -22,6 +37,7 @@
     </ul>
     <p>Все правила вы можете прочитать на <a>этой странице</a>. Лучше ознакомиться чтобы не было неприятных ситуаций.</p>
   </section>
+
   <div class="main-container">
     <div class = "info-panel">
       <div class="info-time">
@@ -36,6 +52,7 @@
       <div>Кол-во неверных слов: {{wrongW}} сл</div>
       <div></div>
       <div>Комбо: {{kombo}} слов подряд</div>
+      <div>Лучшее комбо: {{bestKombo}} слов подряд</div>
     </div>
     <div class="input-container">
       <div class="text-container">
@@ -47,6 +64,7 @@
         </p>
       </div>
       <input
+        #inputText
         type="text"
         value={{value}}
         (input)="setValue($event)"

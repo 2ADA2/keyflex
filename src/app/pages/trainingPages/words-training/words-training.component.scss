@@ -1,6 +1,52 @@
 .wrong{
   color:red;
 }
+.cross {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.modal-container{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 3000;
+  top:0;
+  left:0;
+  cursor: pointer;
+
+  & .modal{
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: repeat(4, 1fr);
+    position: relative;
+    z-index: 3001;
+    top:100px;
+    margin:auto;
+    cursor: default;
+    animation: show-modal 0.2s both;
+  }
+}
+
+.hide{
+  display: none;
+}
+
+@keyframes show-modal {
+  0%{
+    top:50px;
+    transform: scale(1, 0.5);
+    opacity: 0;
+  }
+  100%{
+    top:100px;
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
 
 .main-header{
   margin: auto;
@@ -10,15 +56,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
-
   & .info-panel, & .input-container{
     display: grid;
     padding: 10px 0;
   }
 
-  .info-panel{
+  & .info-panel{
     width: 1100px;
     grid-template-columns: 2fr 2fr 3fr;
     grid-template-rows: repeat(4, 1fr);
@@ -33,10 +76,20 @@
       grid-column: 1/2;
       grid-row: 1/4;
       font-size: 24px;
+      display: flex;
+      flex-direction: column;
       justify-self: center;
+      align-items: center;
+
+      & h5{
+        display: inline;
+      }
 
       & h5:last-child{
-        font-size: 40px;
+        font-size: 60px;
+        line-height: 60px;
+        position: relative;
+        top: 20px;
       }
     }
 
@@ -97,5 +150,33 @@
       height: 46px;
       grid-row-start: 2;
     }
+  }
+}
+
+.info-panel{
+  display: grid;
+  width: 1100px;
+  grid-template-columns: 2fr 2fr 3fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-row-gap: 10px;
+  align-items: center;
+  background: #1c1c1c;
+  color:white;
+  border-radius: 10px;
+  padding: 40px 10px;
+
+  & .info-time{
+    grid-column: 1/2;
+    grid-row: 1/5;
+    font-size: 24px;
+    justify-self: center;
+
+    & h5:last-child{
+      font-size: 40px;
+    }
+  }
+
+  & div{
+    justify-self: start;
   }
 }

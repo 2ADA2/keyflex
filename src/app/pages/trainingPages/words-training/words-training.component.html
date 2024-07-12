@@ -1,24 +1,24 @@
 <main>
   <div class="main-header">
-    <h2>{{words.header}}</h2>
-    <span>Сложность: {{words.level}}</span>
+    <h2>{{ json.header }}</h2>
+    <span>Сложность: {{ json.level }}</span>
   </div>
 
   <div class="modal-container" [ngClass]="{hide:!isModal}" (click)="setIsModal()">
-    <div class = "info-panel modal">
+    <div class="info-panel modal">
       <fa-icon [icon]="faX" class="cross"></fa-icon>
       <div class="info-time">
         <h5>Слов в минуту: </h5>
-        <h5>{{ (symbolsPerMin/5).toFixed(2) }} свм</h5>
+        <h5>{{ (symbolsPerMin / 5).toFixed(2) }} свм</h5>
       </div>
       <div>Символов в минуту: {{ symbolsPerMin.toFixed(2) }} СВМ</div>
-      <div>Кол-во неверных слов: {{wrongW}} сл</div>
-      <div>Кол-во верных слов {{rightW}} сл</div>
-      <div>Лучшее комбо: {{bestKombo}} слов подряд</div>
+      <div>Кол-во неверных слов: {{ wrongW }} сл</div>
+      <div>Кол-во верных слов {{ rightW }} сл</div>
+      <div>Лучшее комбо: {{ bestKombo }} слов подряд</div>
     </div>
   </div>
 
-  <section class = "info-container">
+  <section class="info-container">
     <h4>Правила</h4>
     <p>Здесь приведены правила пользования вкратце, если вы впервые то почитайте внимательно:</p>
     <ul>
@@ -35,32 +35,33 @@
         Комбо - количество верных слов которые вы написали подряд, счетчик обнуляется если вы ввели слово с ошибкой
       </li>
     </ul>
-    <p>Все правила вы можете прочитать на <a>этой странице</a>. Лучше ознакомиться чтобы не было неприятных ситуаций.</p>
+    <p>Все правила вы можете прочитать на <a>этой странице</a>. Лучше ознакомиться чтобы не было неприятных ситуаций.
+    </p>
   </section>
 
   <div class="main-container">
-    <div class = "info-panel">
+    <div class="info-panel">
       <div class="info-time">
         <h5>Время</h5>
-        <h5>{{time}}c</h5>
+        <h5>{{ time }}c</h5>
       </div>
-      <div>Кол-во символов: {{symbols}} см</div>
+      <div>Кол-во символов: {{ symbols }} см</div>
       <div>Символов в минуту: {{ symbolsPerMin.toFixed(2) }} СВМ</div>
-      <div>Кол-во слов: {{Math.floor(symbols/5)}} сл</div>
-      <div>Слов в минуту: {{ (symbolsPerMin/5).toFixed(2) }} слов/м</div>
-      <div>Кол-во верных слов {{rightW}} сл</div>
-      <div>Кол-во неверных слов: {{wrongW}} сл</div>
+      <div>Кол-во слов: {{ Math.floor(symbols / 5) }} сл</div>
+      <div>Слов в минуту: {{ (symbolsPerMin / 5).toFixed(2) }} слов/м</div>
+      <div>Кол-во верных слов {{ rightW }} сл</div>
+      <div>Кол-во неверных слов: {{ wrongW }} сл</div>
       <div></div>
-      <div>Комбо: {{kombo}} слов подряд</div>
-      <div>Лучшее комбо: {{bestKombo}} слов подряд</div>
+      <div>Комбо: {{ kombo }} слов подряд</div>
+      <div>Лучшее комбо: {{ bestKombo }} слов подряд</div>
     </div>
     <div class="input-container">
       <div class="text-container">
         <p>
           <span>
-            {{ text[0]}}
+            {{ text[0] }}
           </span>
-            {{ text.slice(1, text.length).join(" ") }}
+          {{ text.slice(1, text.length).join(" ") }}
         </p>
       </div>
       <input

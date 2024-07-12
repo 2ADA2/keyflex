@@ -5,9 +5,16 @@ import {KeyboardTrainingComponent} from "../../../components/keyboard-training/k
 import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
 import {generate} from "../../../functions/generate";
-import words from "../../../../../public/assets/json/standart.json"
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCross, faX} from "@fortawesome/free-solid-svg-icons";
+
+import standart from "../../../../../public/assets/json/standart.json"
+import extended from "../../../../../public/assets/json/extanded.json"
+
+const types: { [key: string]: any } = {
+  "standart": standart,
+  "extended": extended
+};
 
 @Component({
   selector: 'app-words-training',
@@ -20,38 +27,34 @@ import {faCross, faX} from "@fortawesome/free-solid-svg-icons";
     FaIconComponent,
   ],
   templateUrl: './words-training.component.html',
-  styleUrl: './words-training.component.scss'
+  styleUrls: ['./words-training.component.scss'] // corrected property name
 })
-
 export class WordsTrainingComponent {
-  @ViewChild("inputText", {static: true}) inputText!: ElementRef;
+  @ViewChild("inputText", { static: true }) inputText!: ElementRef;
 
-  public route: ActivatedRoute = inject(ActivatedRoute)
-  public type: string = "standart"
-  public key: string[] = []
-  public text: string[] = ["привет", "Арсен"]
-  public value: string = ""
+  public route: ActivatedRoute = inject(ActivatedRoute);
+  public type: string = this.route.snapshot.params['type'];
+  public json = types[this.type]
+  public key: string[] = [];
+  public text: string[] = ["привет", "Арсен"];
+  public value: string = "";
 
-  public symbols: number = 0
-  public symbolsPerMin: number = 0
-  public wrongW: number = 0
-  public rightW: number = 0
-  public kombo: number = 0
-  public bestKombo: number = 0
+  public symbols: number = 0;
+  public symbolsPerMin: number = 0;
+  public wrongW: number = 0;
+  public rightW: number = 0;
+  public kombo: number = 0;
+  public bestKombo: number = 0;
 
-  public time: number = 60
-  public interval : number = 0
-  public isStart :boolean = false;
-  public isEnd:boolean = false
+  public time: number = 60;
+  public interval: number = 0;
+  public isStart: boolean = false;
+  public isEnd: boolean = false;
 
   public isModal = false;
 
-  constructor() {
-    this.type = this.route.snapshot.params['type'];
-  }
-
   ngOnInit() {
-    this.text = generate(words.words, 300)
+    this.text = generate(types[this.type].words, 300)
     window.addEventListener("keydown", (e: KeyboardEvent) => {
       this.key = [...this.key, e.code];
 
@@ -96,7 +99,7 @@ export class WordsTrainingComponent {
     this.symbols += 1
     this.value = ""
     if(this.text.length < 10){
-      this.text = [...this.text, ...generate(words.words, 100)]
+      this.text = [...this.text, ...generate(types[this.type].words, 100)]
     }
     this.text = this.text.slice(1, this.text.length)
 
@@ -151,7 +154,7 @@ export class WordsTrainingComponent {
   }
 
   restart(){
-    this.text = generate(words.words, 300)
+    this.text = generate(types[this.type].words, 300)
     this.time = 60
     this.symbols = 0
     this.isStart = false
@@ -167,7 +170,7 @@ export class WordsTrainingComponent {
   }
 
   protected readonly Math = Math;
-  protected readonly words = words;
+  protected readonly words = types[this.type].words;
   protected readonly faCross = faCross;
   protected readonly faX = faX;
 }

@@ -1,16 +1,16 @@
 .card-demo-container{
   overflow: hidden;
   width: 100%;
-  border:1px solid black;
+  border:2px solid #868686;
   border-radius: 10px;
   padding: 5px;
 
   & p{
     text-align: start;
-    color: #c9c9c9;
+    color: #9b9b9b;
 
     & span{
-      color:black;
+      color: #ffffff;
     }
   }
 }

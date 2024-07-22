@@ -1,32 +1,30 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 import {KeyboardComponent} from "../../../components/keyboard/keyboard.component";
 import {KeyboardTrainingComponent} from "../../../components/keyboard-training/keyboard-training.component";
 import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faCircleInfo, faCross, faX} from "@fortawesome/free-solid-svg-icons";
-import {generateText} from "../../../functions/generateText";
+import {generate} from "../../../functions/generate";
+import {faCross, faX, faInfoCircle, faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'app-text-training',
+  selector: 'app-custom-words',
   standalone: true,
-  imports: [
-    KeyboardComponent,
+  imports: [    KeyboardComponent,
     KeyboardTrainingComponent,
     FormsModule,
     NgClass,
-    FaIconComponent,
-  ],
-  templateUrl: './text-training.component.html',
-  styleUrl: './text-training.component.scss'
+    FaIconComponent,],
+  templateUrl: './custom-words.component.html',
+  styleUrl: './custom-words.component.scss'
 })
-
-export class TextTrainingComponent {
+export class CustomWordsComponent {
   @ViewChild("inputText", { static: true }) inputText!: ElementRef;
 
+  public words: string[] = ["ad","da"]
+
   public key: string[] = [];
-  public text: string[] = ["загрузка..."];
+  public text: string[] = ["привет", "Арсен"];
   public value: string = "";
 
   public symbols: number = 0;
@@ -43,9 +41,8 @@ export class TextTrainingComponent {
 
   public isModal = false;
 
-  async ngOnInit() {
-    generateText().then((res : string[]) => this.text = res)
-
+  ngOnInit() {
+    this.text = generate(this.words, 300)
     window.addEventListener("keydown", (e: KeyboardEvent) => {
       this.key = [...this.key, e.code];
 
@@ -90,7 +87,7 @@ export class TextTrainingComponent {
     this.symbols += 1
     this.value = ""
     if(this.text.length < 10){
-      generateText().then((res : string[]) => this.text = res)
+      this.text = [...this.text, ...generate(this.words, 100)]
     }
     this.text = this.text.slice(1, this.text.length)
 
@@ -145,7 +142,7 @@ export class TextTrainingComponent {
   }
 
   restart(){
-    generateText().then((res : string[]) => this.text = res)
+    this.text = generate(this.words, 300)
     this.time = 60
     this.symbols = 0
     this.isStart = false
@@ -159,8 +156,10 @@ export class TextTrainingComponent {
     this.isModal = false
     clearInterval(this.interval)
   }
+
   protected readonly Math = Math;
   protected readonly faCross = faCross;
   protected readonly faX = faX;
-    protected readonly faCircleInfo = faCircleInfo;
+  protected readonly faInfoCircle = faInfoCircle;
+  protected readonly faCircleInfo = faCircleInfo;
 }

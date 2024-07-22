@@ -1,15 +1,14 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {KeyboardComponent} from "../../../components/keyboard/keyboard.component";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {KeyboardTrainingComponent} from "../../../components/keyboard-training/keyboard-training.component";
+import {faCircleInfo, faX} from "@fortawesome/free-solid-svg-icons";
+import {generate} from "../../../functions/generate";
+import {KeyboardComponent} from "../../../components/keyboard/keyboard.component";
 import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
-import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faCircleInfo, faCross, faX} from "@fortawesome/free-solid-svg-icons";
-import {generateText} from "../../../functions/generateText";
 
 @Component({
-  selector: 'app-text-training',
+  selector: 'app-custom-text',
   standalone: true,
   imports: [
     KeyboardComponent,
@@ -18,16 +17,16 @@ import {generateText} from "../../../functions/generateText";
     NgClass,
     FaIconComponent,
   ],
-  templateUrl: './text-training.component.html',
-  styleUrl: './text-training.component.scss'
+  templateUrl: './custom-text.component.html',
+  styleUrl: './custom-text.component.scss'
 })
-
-export class TextTrainingComponent {
-  @ViewChild("inputText", { static: true }) inputText!: ElementRef;
+export class CustomTextComponent {
+  @ViewChild("inputText", {static: true}) inputText!: ElementRef;
 
   public key: string[] = [];
-  public text: string[] = ["загрузка..."];
+  public text: string[] = ["привет", "Арсен"];
   public value: string = "";
+  public words: string[] = ["da", "ad"];
 
   public symbols: number = 0;
   public symbolsPerMin: number = 0;
@@ -37,15 +36,14 @@ export class TextTrainingComponent {
   public bestKombo: number = 0;
 
   public time: number = 60;
-  public interval: number = 0;
+  public interval: any = 0;
   public isStart: boolean = false;
   public isEnd: boolean = false;
 
   public isModal = false;
 
-  async ngOnInit() {
-    generateText().then((res : string[]) => this.text = res)
-
+  ngOnInit() {
+    this.text = generate(this.words, 300)
     window.addEventListener("keydown", (e: KeyboardEvent) => {
       this.key = [...this.key, e.code];
 
@@ -65,18 +63,18 @@ export class TextTrainingComponent {
 
   handleInput() {
     const word = this.text[0]
-    if(word === this.value){
+    if (word === this.value) {
       this.rightW = this.rightW + 1
       this.symbols = this.symbols + word.length
       this.kombo = this.kombo + 1
-      if(this.bestKombo < this.kombo) {
+      if (this.bestKombo < this.kombo) {
         this.bestKombo = this.kombo
       }
-    } else{
+    } else {
       this.kombo = 0
       this.wrongW = this.wrongW + 1
       for (let i = 0; i < Math.min(this.value.length, word.length); i++) {
-        if(word[0] !== this.value[0]) {
+        if (word[0] !== this.value[0]) {
           this.symbols = this.symbols - 1
         }
         if (word[i] === this.value[i]) {
@@ -89,17 +87,17 @@ export class TextTrainingComponent {
 
     this.symbols += 1
     this.value = ""
-    if(this.text.length < 10){
-      generateText().then((res : string[]) => this.text = res)
+    if (this.text.length < 10) {
+      this.text = [...this.text, ...generate(this.words, 100)]
     }
     this.text = this.text.slice(1, this.text.length)
 
   }
 
   setValue(e: Event): void {
-    if(this.isEnd) return
+    if (this.isEnd) return
 
-    if(!this.isStart){
+    if (!this.isStart) {
       this.start()
     }
 
@@ -117,10 +115,10 @@ export class TextTrainingComponent {
     this.value = target.value
   }
 
-  intervalCalc(){
+  intervalCalc() {
     this.time = this.time - 1
 
-    if(!this.time){
+    if (!this.time) {
       this.isEnd = true;
       this.isModal = true;
       this.inputText.nativeElement.blur()
@@ -128,30 +126,31 @@ export class TextTrainingComponent {
       this.value = "конец"
     }
 
-    this.symbolsPerMin = this.symbols/(60 - this.time)*60;
+    this.symbolsPerMin = this.symbols / (60 - this.time) * 60;
 
 
   }
 
-  start(){
+  start() {
     this.isStart = true
     this.interval = setInterval(() => {
       this.intervalCalc()
+      console.log(typeof (this.interval))
     }, 1000)
   }
 
-  setIsModal(){
+  setIsModal() {
     this.isModal = false;
   }
 
-  restart(){
-    generateText().then((res : string[]) => this.text = res)
+  restart() {
+    this.text = generate(this.words, 300)
     this.time = 60
     this.symbols = 0
     this.isStart = false
     this.isEnd = false
     this.symbolsPerMin = 0
-    this.value = this.value.slice(0,0)
+    this.value = this.value.slice(0, 0)
     this.wrongW = 0
     this.rightW = 0
     this.kombo = 0
@@ -159,8 +158,9 @@ export class TextTrainingComponent {
     this.isModal = false
     clearInterval(this.interval)
   }
+
   protected readonly Math = Math;
-  protected readonly faCross = faCross;
+  protected readonly faCircleInfo = faCircleInfo;
+
   protected readonly faX = faX;
-    protected readonly faCircleInfo = faCircleInfo;
 }

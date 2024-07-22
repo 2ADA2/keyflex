@@ -6,14 +6,16 @@ import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
 import {generate} from "../../../functions/generate";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faCross, faX} from "@fortawesome/free-solid-svg-icons";
+import {faCross, faX, faInfoCircle, faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 
 import standart from "../../../../../public/assets/json/standart.json"
 import extended from "../../../../../public/assets/json/extanded.json"
+import english from "../../../../../public/assets/json/englush.json"
 
 const types: { [key: string]: any } = {
   "standart": standart,
-  "extended": extended
+  "extended": extended,
+  "english" : english
 };
 
 @Component({
@@ -173,4 +175,6 @@ export class WordsTrainingComponent {
   protected readonly words = types[this.type].words;
   protected readonly faCross = faCross;
   protected readonly faX = faX;
+  protected readonly faInfoCircle = faInfoCircle;
+  protected readonly faCircleInfo = faCircleInfo;
 }

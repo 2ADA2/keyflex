@@ -40,7 +40,8 @@ a{
 .info-container{
   padding: 40px 15%;
   margin: 40px auto;
-  background: rgb(239, 239, 239);
+  background: #1c1c1c;
+  color:white;
 
   & h4{
     font-size: 30px;
@@ -54,6 +55,7 @@ a{
   }
 
   & a{
+    color:white;
     cursor: pointer;
     font-weight: 600;
     &:hover{

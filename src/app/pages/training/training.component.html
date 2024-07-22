@@ -13,25 +13,30 @@
           <h4>200 слов</h4>
 
           <app-demo
-            text="мама куда мышь на я оранжевый окно солнце который если дело ну
-            бы сделать вопрос хотя большой"></app-demo>
+            text="на здесь час рука почти котенок сказать дать жить мы каждый за если твой после ничто такой между стол еще это твой синий кто"></app-demo>
 
-
+          <div class="training-card-info">
+            <span class="green">лёгкий</span>
+          </div>
           <span>Набирайте комбинацию из случайных 200 слов. Самый простой из всех режимов, так как со временем вы запомните эти слова и будете писать их гораздо быстрее.</span>
         </a>
         <a class="training-card" routerLink="/training/word/extended">
           <h4>1000 слов</h4>
           <app-demo
-            text="синий что-нибудь богатый сделать стол стул кудрявый Арсений
-            не любит тебя счастливый хотя отдать уж понимать"></app-demo>
-
+            text="написать первый отношение домой номер старик учитель открыть бумага семь железный герой узнавать легко голос обернуться пара центр"></app-demo>
+          <div class="training-card-info">
+            <span class="yellow">средний</span>
+          </div>
           <span>Набирайте комбинацию из случайных 1000 слов. После тренажёра на 200 слов вам покажется этот сложнее, хотя вы просто не привыкли к новым словам. </span>
         </a>
         <a class="training-card" routerLink="/training/text/russian">
           <h4>Режим текст</h4>
           <app-demo
             text="Следует отметить, что высокотехнологичная концепция общественного уклада позволяет оценить значение своевременного выполнения сверхзадачи."></app-demo>
-          <span>Сложный режим, который хорошо прокачает выши навыки печати. Генерируется случайный текст с длинными и сложными словами. Будьте готовы, что ваша статистика будет совсем другой...</span>
+          <div class="training-card-info">
+            <span class="red">тяжёлый</span>
+          </div>
+          <span>Сложный режим, который хорошо прокачает выши навыки печати. Будьте готовы, что ваша статистика будет совсем другой...</span>
         </a>
       </div>
     </div>
@@ -39,23 +44,38 @@
     <div class="main-section">
       <h3>Особые режимы</h3>
       <div class="training-cards">
-        <a class="training-card" routerLink="/training/text/double">
-          <h4>Русско-английский режим</h4>
-          <app-demo text = "Angular - это фреймворк для JavaScript, для разработки
-          web приложений frontend разработчиками"></app-demo>
-          <span>Больше подходит разработчикам и людям, которым требуется постоянно переключать раскладку. Тут будет представлен случайный текст имеющий русские и английские слова. Наслаждайтесь.</span>
-        </a>
         <a class="training-card" routerLink="/training/word/english">
           <h4>Английский режим</h4>
-          <app-demo text = "USA extanded user table after in put me India cup
-          computer butterfly phone sun tree three equipmant"></app-demo>
+          <app-demo text = "USA extanded user table after in put me India cup computer butterfly phone sun tree three equipmant"></app-demo>
+          <div class="training-card-info">
+            <span class="yellow">средний</span>
+          </div>
           <span>Учите английский или хотите начать быстро печатать на английской раскладке? На такой случай можете попробовать тренажёр на случайные 1000 английских слов. Может даже новые слова для себя выучите.</span>
         </a>
         <a class="training-card" routerLink="/training/word/extrime">
           <h4>Экстрим</h4>
           <app-demo text = "гвлофжфос фзсззфыва ывапролджэ йцукенгшщз хфячсмитьб
           югшщнкувап рлджэфыва ывап хфячсмитьб югшщнкува"></app-demo>
+          <div class="training-card-info">
+            <span class="red">тяжёлый</span>
+          </div>
           <span>Для самых "одарённых" пользователей есть режим который не имеет никакого практического смысла но из всех он является самым трудным. Вам предстоит писать текст? фразы? слова? Только случайные символы мой дорогой, только символы...</span>
+        </a>
+        <a class="training-card" routerLink="/training/custom-words">
+          <h4>Пользовательские слова</h4>
+          <app-demo text = "Арсений туалет слова линейка математика сканави фишка Шелби скибиди фреде"></app-demo>
+          <div class="training-card-info">
+            <span class="green">неизвестный уровень</span>
+          </div>
+          <span>Ваши пользвательские слова. Вставьте любые 20-1000 слов, время тоже можете указать.</span>
+        </a>
+        <a class="training-card" routerLink="/training/custom-text">
+          <h4>Пользовательский текст</h4>
+          <app-demo text = "Я написал какой-то текст и могу его спокойно натренировать, прикольно..."></app-demo>
+          <div class="training-card-info">
+            <span class="green">неизвестный уровень</span>
+          </div>
+          <span>Ваш пользовательский текст. Вставьте любой текст до 1000 символов и тренируйте его, время тоже можете указать.</span>
         </a>
       </div>
     </div>

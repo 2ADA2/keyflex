@@ -10,7 +10,7 @@ main{
 }
 
 .training-card{
-  background: #efefef;
+  color:white;
   width: 30%;
   min-width: 300px;
   max-width: 400px;
@@ -18,16 +18,39 @@ main{
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap:40px;
+  gap:20px;
   align-items: center;
   padding: 40px 20px;
   text-align: center;
   transition-duration: 300ms;
   position: relative;
   font-size: clamp(16px, 1vw, 20px);
+  background: #1c1c1c;
+
+  & .training-card-info{
+    display: flex;
+    gap:20px;
+    width: 100%;
+    padding: 0 8px;
+
+    & span{
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    & .green{
+      background: #27b268;
+    }
+    & .yellow{
+      background: #a8c42b;
+    }
+    & .red{
+      background: #d72b60;
+    }
+  }
 
   &:hover{
-    box-shadow: -3px 3px 10px #8a8a8a;
+    box-shadow: -3px 3px 10px #424242;
     transform: translateY(-3px);
   }
   & h4{

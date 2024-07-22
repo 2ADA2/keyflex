@@ -6,12 +6,20 @@ header{
   align-items: center;
   height: 80px;
   overflow: hidden;
-  background: #efefef;
+  background: #1c1c1c;
 
   & h3{
     cursor: default;
     user-select: none;
-    font-size: 36px;
+    font-size: 52px;
+    color:white;
+    display: flex;
+    align-items: center;
+    gap:20px;
+
+    & span{
+      line-height: 50px;
+    }
   }
 
   & .nav-compact{
@@ -26,16 +34,16 @@ header{
     height: 100%;
 
     & a {
-      color: #606060;
+      color: #dadada;
       font-size: 22px;
 
       &:hover{
-        color: #000;
+        color: #f1f1f1;
       }
     }
 
     & .active{
-      color: #000000;
+      color: #ffffff;
     }
 
     &:after{

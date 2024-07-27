@@ -1,5 +1,5 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {KeyboardComponent} from "../../../components/keyboard/keyboard.component";
 import {KeyboardTrainingComponent} from "../../../components/keyboard-training/keyboard-training.component";
 import {FormsModule} from "@angular/forms";
@@ -11,13 +11,14 @@ import {generateText} from "../../../functions/generateText";
 @Component({
   selector: 'app-text-training',
   standalone: true,
-  imports: [
-    KeyboardComponent,
-    KeyboardTrainingComponent,
-    FormsModule,
-    NgClass,
-    FaIconComponent,
-  ],
+    imports: [
+        KeyboardComponent,
+        KeyboardTrainingComponent,
+        FormsModule,
+        NgClass,
+        FaIconComponent,
+        RouterLink,
+    ],
   templateUrl: './text-training.component.html',
   styleUrl: './text-training.component.scss'
 })

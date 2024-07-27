@@ -2,6 +2,7 @@
   <div class="main-header">
     <h2>{{ json.header }}</h2>
     <span>Сложность: {{ json.level }}</span>
+    <button style="padding: 5px 20px; margin-top: 10px" routerLink = "/training"><== Назад</button>
   </div>
 
   <div class="modal-container" [ngClass]="{hide:!isModal}" (click)="setIsModal()">

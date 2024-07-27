@@ -1,5 +1,5 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {KeyboardComponent} from "../../../components/keyboard/keyboard.component";
 import {KeyboardTrainingComponent} from "../../../components/keyboard-training/keyboard-training.component";
 import {FormsModule} from "@angular/forms";
@@ -11,23 +11,26 @@ import {faCross, faX, faInfoCircle, faCircleInfo} from "@fortawesome/free-solid-
 import standart from "../../../../../public/assets/json/standart.json"
 import extended from "../../../../../public/assets/json/extanded.json"
 import english from "../../../../../public/assets/json/englush.json"
+import extrime from "../../../../../public/assets/json/extrime.json"
 
 const types: { [key: string]: any } = {
   "standart": standart,
   "extended": extended,
-  "english" : english
+  "english" : english,
+  "extrime" : extrime
 };
 
 @Component({
   selector: 'app-words-training',
   standalone: true,
-  imports: [
-    KeyboardComponent,
-    KeyboardTrainingComponent,
-    FormsModule,
-    NgClass,
-    FaIconComponent,
-  ],
+    imports: [
+        KeyboardComponent,
+        KeyboardTrainingComponent,
+        FormsModule,
+        NgClass,
+        FaIconComponent,
+        RouterLink,
+    ],
   templateUrl: './words-training.component.html',
   styleUrls: ['./words-training.component.scss'] // corrected property name
 })
@@ -40,6 +43,7 @@ export class WordsTrainingComponent {
   public key: string[] = [];
   public text: string[] = ["привет", "Арсен"];
   public value: string = "";
+  public isSymbols = this.type === "extrime";
 
   public symbols: number = 0;
   public symbolsPerMin: number = 0;
@@ -56,7 +60,7 @@ export class WordsTrainingComponent {
   public isModal = false;
 
   ngOnInit() {
-    this.text = generate(types[this.type].words, 300)
+    this.text = generate(types[this.type].words, 300, this.isSymbols)
     window.addEventListener("keydown", (e: KeyboardEvent) => {
       this.key = [...this.key, e.code];
 
@@ -101,7 +105,7 @@ export class WordsTrainingComponent {
     this.symbols += 1
     this.value = ""
     if(this.text.length < 10){
-      this.text = [...this.text, ...generate(types[this.type].words, 100)]
+      this.text = [...this.text, ...generate(types[this.type].words, 100, this.isSymbols)]
     }
     this.text = this.text.slice(1, this.text.length)
 
@@ -156,7 +160,7 @@ export class WordsTrainingComponent {
   }
 
   restart(){
-    this.text = generate(types[this.type].words, 300)
+    this.text = generate(types[this.type].words, 300, this.isSymbols)
     this.time = 60
     this.symbols = 0
     this.isStart = false

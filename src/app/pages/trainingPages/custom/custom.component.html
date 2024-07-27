@@ -1,7 +1,8 @@
 <main>
   <div class="main-header">
-    <h2>ывап</h2>
-    <span>Сложность: фыва</span>
+    <h2>Тренировка: тип пользовательский</h2>
+    <span>Сложность: пользовательская</span>
+    <button style="padding: 5px 20px; margin-top: 10px" routerLink = "/training"><== Назад</button>
   </div>
 
   <div class="modal-container" [ngClass]="{hide:!isModal}" (click)="setIsModal()">
@@ -74,19 +75,33 @@
         }"
       >
       <button (click)="restart()">Заново</button>
+      <button (click)="setSettings()">
+        <fa-icon [icon]="faGear"></fa-icon>
+      </button>
     </div>
 
-    <app-keyboard-training key={{key}}></app-keyboard-training>
+    <div class="custom-settings-container">
+      <app-keyboard-training key={{key}} [ngClass]="{hideSettings:isSettings, customSettings:!isSettings}"></app-keyboard-training>
+      <div [ngClass]="{hideSettings:!isSettings, customSettings:isSettings}" class="custon-settings">
+        <h3>настройки</h3>
+        <div class="">
+          <fa-icon [icon]="faCircleInfo"></fa-icon>
+          Указывайте нужные вам слова через пробел, затем сохраните!
+        </div>
+        <textarea #inputSettings type = "text" [(ngModel)] = "settingsValue" (ngModelChange)="handleSettings()"></textarea>
+        <div>
+          <button  (click)="setSettings()">Сохранить</button>
+          <span> Кол-во слов: {{(words[0] === "") ? "0" : words.length}}</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <section class="info-container">
     <h4> <fa-icon [icon]="faCircleInfo"></fa-icon> Информация</h4>
     <p>
-      Тренажёр на слова: скрипт генерирует случайный порядок слов, который пользователь должен напечатать с максимальной точностью. Программа собирает статистику в реальном времени и предоставляет её пользователю.
-    </p>
-    <p>-</p>
-    <p>
-      ыва
+      Пользовательский тренажёр
     </p>
   </section>
 </main>

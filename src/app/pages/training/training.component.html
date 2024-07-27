@@ -1,8 +1,21 @@
 <main>
   <div class="main-header">
-    <h2>Тренировка</h2>
+    <h2>Тренировка: режимы</h2>
     <span>Выберите режим для тренировки печати</span>
   </div>
+  <section class="info-container">
+    <h4> <fa-icon [icon]="faCircleInfo"></fa-icon> Тренажёры</h4>
+    <p>
+      Keyflex предоставит вам на этой странице множество тренажёров на выбор. Вы можете как просто опробовать их и проверить свою скорость печати, так и тренировать её.
+    </p>
+    <p>
+      Для большей эффективности рекомендуется освоить печать с помощью 10 пальцев на сайте <a target="_blank" href="https://www.ratatype.com">ratatype</a>, а в последствие и слепую печать.
+    </p>
+    <p>
+      Существуют множесто тестов для печати, но мы взяли самый удобный в использовании - как на сайте <a target="_blank" href = "https://10fastfingers.com/typing-test/russian">10fastfingers.com</a> и усовершенствовали его по-своему, чтобы сделать более удобным в испльзовании.
+    </p>
+    <p>Новичкам рекомендуется использовать <a routerLink = "/training/word/standart">тренажёр на 200 слов</a>.</p>
+  </section>
   <div class="main-container">
 
     <div class="main-section">
@@ -44,6 +57,7 @@
     <div class="main-section">
       <h3>Особые режимы</h3>
       <div class="training-cards">
+
         <a class="training-card" routerLink="/training/word/english">
           <h4>Английский режим</h4>
           <app-demo text = "USA extanded user table after in put me India cup computer butterfly phone sun tree three equipmant"></app-demo>
@@ -52,6 +66,7 @@
           </div>
           <span>Учите английский или хотите начать быстро печатать на английской раскладке? На такой случай можете попробовать тренажёр на случайные 1000 английских слов. Может даже новые слова для себя выучите.</span>
         </a>
+
         <a class="training-card" routerLink="/training/word/extrime">
           <h4>Экстрим</h4>
           <app-demo text = "гвлофжфос фзсззфыва ывапролджэ йцукенгшщз хфячсмитьб
@@ -61,21 +76,14 @@
           </div>
           <span>Для самых "одарённых" пользователей есть режим который не имеет никакого практического смысла но из всех он является самым трудным. Вам предстоит писать текст? фразы? слова? Только случайные символы мой дорогой, только символы...</span>
         </a>
-        <a class="training-card" routerLink="/training/custom-words">
-          <h4>Пользовательские слова</h4>
-          <app-demo text = "Арсений туалет слова линейка математика сканави фишка Шелби скибиди фреде"></app-demo>
+
+        <a class="training-card" routerLink="/training/custom">
+          <h4>Пользовательский</h4>
+          <app-demo text = "Арсений туалет слова линейка математика сканави фишка Шелби скибиди фреде клавиатура Райден помогатор"></app-demo>
           <div class="training-card-info">
-            <span class="green">неизвестный уровень</span>
+            <span class="green">пользовательский</span>
           </div>
-          <span>Ваши пользвательские слова. Вставьте любые 20-1000 слов, время тоже можете указать.</span>
-        </a>
-        <a class="training-card" routerLink="/training/custom-text">
-          <h4>Пользовательский текст</h4>
-          <app-demo text = "Я написал какой-то текст и могу его спокойно натренировать, прикольно..."></app-demo>
-          <div class="training-card-info">
-            <span class="green">неизвестный уровень</span>
-          </div>
-          <span>Ваш пользовательский текст. Вставьте любой текст до 1000 символов и тренируйте его, время тоже можете указать.</span>
+          <span>Ваш пользовательский тренажёр. Укажите слова, или текст который хотите тренировать и занимайтесь!</span>
         </a>
       </div>
     </div>

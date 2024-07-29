@@ -7,7 +7,7 @@ import {KeyboardComponent} from "../../../components/keyboard/keyboard.component
 import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
 import {faCircleInfo, faGear, faX} from "@fortawesome/free-solid-svg-icons";
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
+import {CheckboxComponent} from "../../../components/checkbox/checkbox.component";
 
 @Component({
   selector: 'app-custom',
@@ -19,6 +19,7 @@ import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
     NgClass,
     FaIconComponent,
     RouterLink,
+    CheckboxComponent,
   ],
   templateUrl: './custom.component.html',
   styleUrl: './custom.component.scss'
@@ -33,7 +34,7 @@ export class CustomComponent {
   public text: string[] = ["привет", "Арсен"];
   public value: string = "";
   public words: string[] = []
-  public isSymbols = this.type === "extrime";
+  public isSymbols: boolean = false
   public isSettings: boolean = false;
   public settingsValue: string = localStorage.getItem("settingsValue") || "привет это твой тренажёр";
 
@@ -48,13 +49,19 @@ export class CustomComponent {
   public interval: number = 0;
   public isStart: boolean = false;
   public isEnd: boolean = false;
+  public isRandom: boolean = (localStorage.getItem("random") === "true") ? true : false;
 
   public isModal = false;
 
   ngOnInit() {
     this.words = this.settingsValue.split(" ")
-    if(this.words[0] === "") this.words = ['укажите хотя бы одно слово']
-    this.text = generate(this.words, 300, this.isSymbols)
+    if (this.words[0] === "") this.words = ['укажите хотя бы одно слово']
+    if (this.text.length < 10) {
+      this.isRandom ?
+        this.text = generate(this.words, 300, this.isSymbols) :
+        this.text = this.words
+    }
+
     window.addEventListener("keydown", (e: KeyboardEvent) => {
       this.key = [...this.key, e.code];
 
@@ -102,7 +109,9 @@ export class CustomComponent {
     this.symbols += 1
     this.value = ""
     if (this.text.length < 10) {
-      this.text = [...this.text, ...generate(this.words, 100, this.isSymbols)]
+      this.isRandom ?
+        this.text = [...this.text, ...generate(this.words, 100, this.isSymbols)] :
+        this.text = [...this.text, ...this.words]
     }
     this.text = this.text.slice(1, this.text.length)
 
@@ -142,8 +151,6 @@ export class CustomComponent {
     }
 
     this.symbolsPerMin = this.symbols / (60 - this.time) * 60;
-
-
   }
 
   start() {
@@ -163,7 +170,11 @@ export class CustomComponent {
   }
 
   restart() {
-    this.text = generate(this.words, 300, this.isSymbols)
+    if (this.isRandom) {
+      this.text = generate(this.words, 300, this.isSymbols)
+    } else {
+      this.text = this.words
+    }
     this.time = 60
     this.symbols = 0
     this.isStart = false
@@ -181,11 +192,11 @@ export class CustomComponent {
 
   setSettings() {
     let value: string = this.inputSettings.nativeElement.value
-    if (value){
+    if (value) {
       this.words = value.split(" ").map(e => e.split(`\n`)).flat(2).filter(e => e !== "")
       this.settingsValue = this.words.join(" ")
       this.inputSettings.nativeElement.value = this.settingsValue
-    } else{
+    } else {
       this.words = ["укажите хотя бы одно слово"]
     }
 
@@ -208,10 +219,14 @@ export class CustomComponent {
     localStorage.setItem("settingsValue", value)
   }
 
+  setRandom() {
+    this.isRandom = !this.isRandom
+    localStorage.setItem("random", JSON.stringify(this.isRandom))
+  }
+
   protected readonly Math = Math;
   protected readonly faX = faX;
   protected readonly faCircleInfo = faCircleInfo;
   protected readonly faGear = faGear;
-  protected readonly JSON = JSON;
 }
 

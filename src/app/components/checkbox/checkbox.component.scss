@@ -1,0 +1,32 @@
+.checkbox{
+  width: 60px;
+  height: 30px;
+  border-radius: 40px;
+  border: 2px solid #a1a1a1;
+  position: relative;
+  transition-duration: 200ms;
+  transition-delay: 100ms;
+  cursor: pointer;
+
+  &::after{
+    content:"";
+    display: block;
+    border-radius: 50%;
+    border: 2px solid #a1a1a1;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    transform: translateX(-2px) translateY(-2px);
+    transition-duration: 200ms;
+  }
+}
+
+.active{
+  background: #1c1c1c;
+  border: 2px solid #c5c5c5;
+  &::after{
+    background: #313131;
+    transform: translateX(28px) translateY(-2px);
+    border: 2px solid #c5c5c5;
+  }
+}

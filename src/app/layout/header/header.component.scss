@@ -1,4 +1,4 @@
-header{
+header {
   display: flex;
   padding: 10px 10%;
   padding-left: 15%;
@@ -8,27 +8,32 @@ header{
   overflow: hidden;
   background: #1c1c1c;
 
-  & h3{
+  & h3 {
     cursor: default;
     user-select: none;
     font-size: 52px;
-    color:white;
+    color: white;
     display: flex;
     align-items: center;
-    gap:20px;
+    gap: 20px;
 
-    & span{
+    & svg{
+      width: 80px;
+      height: 80px;
+    }
+
+    & span {
       line-height: 50px;
     }
   }
 
-  & .nav-compact{
+  & .nav-compact {
     display: none;
   }
 
-  & nav{
+  & nav {
     display: flex;
-    gap:40px;
+    gap: 40px;
     position: relative;
     align-items: center;
     height: 100%;
@@ -37,16 +42,16 @@ header{
       color: #dadada;
       font-size: 22px;
 
-      &:hover{
+      &:hover {
         color: #f1f1f1;
       }
     }
 
-    & .active{
+    & .active {
       color: #ffffff;
     }
 
-    &:after{
+    &:after {
       content: "";
       display: block;
       position: absolute;
@@ -55,31 +60,85 @@ header{
       background: white;
       bottom: -22px;
       rotate: 45deg;
-      left:35px;
+      left: 35px;
       transition-duration: 300ms;
     }
 
   }
 
-  & .training{
-    &:after{
-      left:187px
+  & .training {
+    &:after {
+      left: 187px
     }
   }
 
-  & .play{
-    &:after{
-      left:332px
+  & .play {
+    &:after {
+      left: 332px
     }
   }
-  & .about{
-    &:after{
-      left:451px
+
+  & .about {
+    &:after {
+      left: 451px
     }
   }
-  & .user{
-    &:after{
-      left:577px
+
+  & .user {
+    &:after {
+      left: 577px
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  header {
+    padding: 5px 5%;
+    height: 70px;
+
+    & nav {
+      gap:20px;
+      & a {
+        font-size: 20px;
+      }
+
+      &:after {
+        left: 30px;
+      }
+    }
+
+    & h3{
+      font-size: 36px;
+      gap:10px;
+      & svg{
+        width: 60px;
+        height: 60px;
+      }
+
+    }
+
+    & .training {
+      &:after {
+        left: 150px
+      }
+    }
+
+    & .play {
+      &:after {
+        left: 267px
+      }
+    }
+
+    & .about {
+      &:after {
+        left: 360px
+      }
+    }
+
+    & .user {
+      &:after {
+        left: 457px
+      }
     }
   }
 }

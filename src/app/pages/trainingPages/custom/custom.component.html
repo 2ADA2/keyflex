@@ -88,6 +88,9 @@
           <fa-icon [icon]="faCircleInfo"></fa-icon>
           Указывайте нужные вам слова через пробел, затем сохраните!
         </div>
+        <div style="display: flex; align-items: center; gap:10px;">
+          Случайная генирация <app-checkbox [checked]= "isRandom" (checkedChange) = "setRandom()"></app-checkbox>
+        </div>
         <textarea #inputSettings type = "text" [(ngModel)] = "settingsValue" (ngModelChange)="handleSettings()"></textarea>
         <div>
           <button  (click)="setSettings()">Сохранить</button>
@@ -95,7 +98,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <section class="info-container">

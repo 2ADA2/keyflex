@@ -13,6 +13,7 @@ export const routes: Routes = [
   {path: 'training', component: TrainingComponent},
   {path: 'play', component: PlayComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'about/:option', component: AboutComponent},
   {path: 'profile', component: UserComponent},
 
   {path: 'training/text/:type', component: TextTrainingComponent},

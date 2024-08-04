@@ -100,10 +100,12 @@ h4:after {
 .main-charts-container {
   display: grid;
   grid-template-columns:1fr 1fr;
+  grid-template-rows: repeat(2, auto);
   gap: 40px;
+  margin-bottom: 40px;
 
   & h5 {
-    font-size: 30px;
+    font-size: 24px;
     margin: 0 0 20px 0;
     border-left: 4px solid #1c1c1c;
     padding-left: 20px;
@@ -117,7 +119,7 @@ h4:after {
   background: #1c1c1c;
   color: white;
   padding: 40px 10%;
-
+  max-height: 700px;
 
   & h4:after {
     background: white;
@@ -125,13 +127,46 @@ h4:after {
 }
 
 
+
+.info-container {
+  padding: 40px 5%;
+  border-radius: 10px;
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-rows: repeat(10, auto);
+  grid-template-columns: 100%;
+  width: 100%;
+  gap: 5px;
+  margin: 0;
+
+  & h5 {
+    font-size: 24px;
+    border-left: 4px solid #ffffff;
+    display: flex;
+    align-items: center;
+  }
+
+  & div {
+    min-width: 300px;
+    display: grid;
+    grid-template-columns:250px auto;
+    font-size: 16px;
+
+    & span:first-child {
+      text-align: end;
+      padding-right: 10px;
+    }
+  }
+}
+
 .medium-chart {
+  margin-top:40px;
+
   & .info-container {
     padding: 40px 5%;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
-    grid-template-rows: repeat(4, auto);
 
     & div {
       min-width: 300px;

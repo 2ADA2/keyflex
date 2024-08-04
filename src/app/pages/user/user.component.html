@@ -67,7 +67,7 @@
   </div>
 
   <div class="main-chart">
-    <h4>Результаты последних тестов</h4>
+    <h4>Результаты всех тестов</h4>
     <apx-chart
       [series]="mainChart.series"
       [chart]="mainChart.chart"
@@ -115,7 +115,7 @@
             <span>43</span>
           </div>
           <div>
-            <span>Пользоват.:</span>
+            <span>Пользовательский:</span>
             <span>100</span>
           </div>
         </div>
@@ -133,7 +133,7 @@
           [colors]="countChartOptions.colors"
         ></apx-chart>
         <div class="info-container">
-          <h5>Статистика: точность</h5>
+          <h5>Статистика: посещаемость</h5>
           <div>
             <span>200 слов:</span>
             <span>1001</span>
@@ -155,10 +155,68 @@
             <span>17</span>
           </div>
           <div>
-            <span>Пользоват.:</span>
+            <span>Пользовательский:</span>
             <span>30</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="main-charts-container">
+      <div class="info-container">
+        <h5>Статистика: последние результаты</h5>
+        <div>
+          <span>Лучший результат:</span>
+          <span>80 сл. в минуту</span>
+        </div>
+        <div>
+          <span>Худший результат:</span>
+          <span>35 сл. в минуту</span>
+        </div>
+        <div>
+          <span>Средний результат:</span>
+          <span>61 сл. в минуту</span>
+        </div>
+        <div>
+          <span>Лучшая точность:</span>
+          <span>97%</span>
+        </div>
+        <div>
+          <span>Худшая точность:</span>
+          <span>83%</span>
+        </div>
+        <div>
+          <span>Средняя точность:</span>
+          <span>95%</span>
+        </div>
+        <div>
+          <span>Популярный:</span>
+          <span>200 слов</span>
+        </div>
+        <div>
+          <span>Лучшая успеваемость:</span>
+          <span>200 слов</span>
+        </div>
+        <div>
+          <span>Лучшая точность:</span>
+          <span>200 слов</span>
+        </div>
+      </div>
+      <div class="main-chart" style="border-radius: 10px">
+        <h5>Последние 10 результатов</h5>
+        <apx-chart
+          [series]="lastResults.series"
+          [chart]="lastResults.chart"
+          [stroke]="lastResults.stroke"
+          [colors]="lastResults.colors"
+          [plotOptions] = "lastResults.plotOptions"
+          [dataLabels] = "lastResults.dataLabels"
+          [xaxis] = "lastResults.xaxis"
+          [yaxis] = "lastResults.yaxis"
+          [grid]="mainChart.grid"
+          [tooltip]="barChartOptions.tooltip"б
+          [legend]="barChartOptions.legend"
+        ></apx-chart>
       </div>
     </section>
 

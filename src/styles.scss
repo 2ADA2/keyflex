@@ -9,9 +9,13 @@ a{
   text-decoration: none;
   color:black;
 }
-
+main{
+  max-width: 2700px;
+  margin:auto;
+  min-height: 100dvh;
+}
 .main-header{
-  padding: 40px 15%;
+  padding: 40px 10%;
   & h2{
     border-left: 10px solid black;
     padding-left: 40px;
@@ -27,7 +31,7 @@ a{
   }
 }
 .main-container{
-  padding: 40px 15%;
+  padding: 40px 10%;
 }
 .main-section{
   margin-top: 40px;

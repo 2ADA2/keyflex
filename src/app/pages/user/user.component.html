@@ -1,3 +1,166 @@
 <main>
-  <p>user works!</p>
+  <div class="main-header">
+    <h2>Профиль</h2>
+    <span>Статистика и информация о пользователе</span>
+  </div>
+  <div class="main-container">
+    <section class="user-info">
+      <div class="user-info-header">
+        <h4>ada22</h4>
+        <button>
+          <fa-icon [icon]="faGear"></fa-icon>
+          Настройки
+        </button>
+      </div>
+
+      <div class="main-info">
+        <span>Клавиатура: </span>
+        <span>bloody Q135</span>
+
+        <span>Слепая печать: </span>
+        <span>владеет</span>
+
+        <span>Профессия: </span>
+        <span>скрыто</span>
+
+        <span>Страна\город: </span>
+        <span>Беларусь\Гомель</span>
+
+        <span>На Keyflex с: </span>
+        <span>03.08.2024</span>
+      </div>
+
+      <div class="other-info">
+        <div class="user-other">
+          <span>Другая информация:</span>
+          <p>Я - кто-то там и это история о том как я попал в зомби апокалипсис и выживал среди зомбакооов. Могу что-то
+            еще сюда написть но сейчас 2 ночи и мне очень лень придумывать нормальный текст для этого ужастика.</p>
+        </div>
+        <h4>Достижения</h4>
+        <div class="achieve-container">
+          <div class="active">
+            40
+          </div>
+          <div class="active">
+            50
+          </div>
+          <div class="active">
+            60
+          </div>
+          <div class="active">
+            70
+          </div>
+          <div class="">
+            80
+          </div>
+          <div class="">
+            90
+          </div>
+          <div class="">
+            100
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+
+  <div class="main-chart">
+    <h4>Результаты последних тестов</h4>
+    <apx-chart
+      [series]="mainChart.series"
+      [chart]="mainChart.chart"
+      [stroke]="mainChart.stroke"
+      [yaxis]="mainChart.yaxis"
+      [xaxis]="mainChart.xaxis"
+      [grid]="mainChart.grid"
+      [tooltip]="mainChart.tooltip"
+    ></apx-chart>
+  </div>
+
+  <div class="main-container">
+
+    <section class="main-charts-container">
+      <div class="medium-chart">
+        <h5>Точность</h5>
+        <apx-chart
+          [series]="accuracyChartSeries"
+          [chart]="countChartOptions.chart"
+          [labels]="countChartOptions.labels"
+          [fill]="countChartOptions.fill"
+          [stroke]="countChartOptions.stroke"
+          [colors]="countChartOptions.colors"
+        ></apx-chart>
+        <div class="info-container">
+          <h5>Статистика: точность</h5>
+          <div>
+            <span>200 слов:</span>
+            <span>100</span>
+          </div>
+          <div>
+            <span>1000 слов:</span>
+            <span>59</span>
+          </div>
+          <div>
+            <span>Текст:</span>
+            <span>90</span>
+          </div>
+          <div>
+            <span>Английский:</span>
+            <span>36</span>
+          </div>
+          <div>
+            <span>Символьный:</span>
+            <span>43</span>
+          </div>
+          <div>
+            <span>Пользоват.:</span>
+            <span>100</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="medium-chart">
+        <h5>Посещаемость</h5>
+        <apx-chart
+          [series]="attendanceChartSeries"
+          [chart]="countChartOptions.chart"
+          [labels]="countChartOptions.labels"
+          [fill]="countChartOptions.fill"
+          [stroke]="countChartOptions.stroke"
+          [colors]="countChartOptions.colors"
+        ></apx-chart>
+        <div class="info-container">
+          <h5>Статистика: точность</h5>
+          <div>
+            <span>200 слов:</span>
+            <span>1001</span>
+          </div>
+          <div>
+            <span>1000 слов:</span>
+            <span>304</span>
+          </div>
+          <div>
+            <span>Текст:</span>
+            <span>96</span>
+          </div>
+          <div>
+            <span>Английский:</span>
+            <span>201</span>
+          </div>
+          <div>
+            <span>Символьный:</span>
+            <span>17</span>
+          </div>
+          <div>
+            <span>Пользоват.:</span>
+            <span>30</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </main>

@@ -24,4 +24,5 @@ export class AboutComponent {
 
   protected readonly faCircleInfo = faCircleInfo;
   protected readonly faExclamationCircle = faExclamationCircle;
+    protected readonly Math = Math;
 }

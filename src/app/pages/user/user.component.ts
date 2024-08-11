@@ -21,6 +21,9 @@ import {
 import {barChartOptions, countChart, mainChart} from "../../utils/chartOptions";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faGear} from "@fortawesome/free-solid-svg-icons";
+import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {RouterLink} from "@angular/router";
+import {CheckboxComponent} from "../../components/checkbox/checkbox.component";
 
 
 
@@ -54,12 +57,23 @@ export type ChartLineOptions = {
   standalone: true,
   imports: [
     NgApexchartsModule,
-    FaIconComponent
+    FaIconComponent,
+    ReactiveFormsModule,
+    RouterLink,
+    CheckboxComponent
   ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
+  public isSettings : boolean = false;
+  form:FormGroup = new FormGroup({
+    keyboard: new FormControl(null),
+    location: new FormControl(null),
+    other: new FormControl(null),
+  })
+  isTT : boolean = false
+
   public mainChart: ChartLineOptions;
 
   public countChartOptions: ChartPieOptions;
@@ -88,6 +102,21 @@ export class UserComponent {
       series: [{
         data: [70, 35, 65, 67, 75, 80, 69, 61, 71, 75]
       }],
+
+    }
+  }
+
+  onSubmit(){
+    console.log(1)
+  }
+
+  setIsTT(){
+    this.isTT = !this.isTT
+  }
+
+  setIsSettings(){
+    this.isSettings = !this.isSettings
+    if(this.isSettings){
 
     }
   }

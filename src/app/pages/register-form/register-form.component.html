@@ -4,10 +4,19 @@
 >
   <h1>Регистрация аккаунта KF</h1>
   <label>
-    электронная почта или ник
+    имя пользователя
     <input
       formControlName = "login"
       placeholder="введите имя пользователя или почту"
+    >
+  </label>
+
+  <label>
+    электронная почта
+    <input
+      formControlName = "email"
+      placeholder="введите адрес электронной почты"
+      type="email"
     >
   </label>
 
@@ -28,7 +37,11 @@
     >
   </label>
 
-  <button>Войти</button>
+  <div>
+    <button>Войти</button>
+    <button>Войти</button>
+  </div>
+
   <div>
     <span>уже есть аккаунт?</span>
     <a routerLink="/login">войдите</a>

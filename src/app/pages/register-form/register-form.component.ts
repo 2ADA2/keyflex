@@ -21,14 +21,15 @@ export class RegisterFormComponent {
     login: new FormControl(null),
     password: new FormControl(null),
     password_repeat: new FormControl(null),
+    email: new FormControl(null),
   })
 
   onSubmit(){
-    if(this.form.value.password === this.form.value.password_repeat){
+    if(this.form.value.password === this.form.value.password_repeat && this.form.valid){
       //@ts-ignore
-      this.service.register({name:this.form.value.login, password:this.form.value.password})
+      this.service.register({name:this.form.value.login, password:this.form.value.password, email:this.form.value.email})
         .subscribe(() => {
-          this.router.navigate(['/profile'])
+          this.router.navigate(['/login'])
         })
     }
   }

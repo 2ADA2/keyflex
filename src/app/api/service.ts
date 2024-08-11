@@ -22,10 +22,10 @@ export class Service {
     return !!this.token;
   }
 
-  login(payload: { name: string, password: string }) {
+  login(payload: { username: string, password: string }) {
     const formData: FormData = new FormData()
     console.log(this.baseApiUrl)
-    formData.append("name", payload.name)
+    formData.append("username", payload.username)
     formData.append("password", payload.password);
 
     return this.http.post<TokenResponce>(
@@ -33,27 +33,21 @@ export class Service {
       formData
     ).pipe(
       tap(val => {
-        console.log(1)
-        this.token = val.token
+        this.token = val.access_token
         this.cookieService.set("token", this.token)
       })
     )
   }
 
-  register(payload: { name: string, password: string }){
-    const formData: FormData = new FormData()
-
-    formData.append("name", payload.name)
-    formData.append("password", payload.password);
+  register(payload: { name: string, password: string, email: string }){
 
     return this.http.post<TokenResponce>(
       this.baseApiUrl+"register",
-      formData
-    ).pipe(
-      tap(val => {
-        this.token = val.token
-        this.cookieService.set("token", this.token)
-      })
+      {
+        username:payload.name,
+        password:payload.password,
+        email:payload.email
+      }
     )
   }
 

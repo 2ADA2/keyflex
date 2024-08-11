@@ -1,224 +1,283 @@
-<main>
-  <div class="main-header">
-    <h2>Профиль</h2>
-    <span>Статистика и информация о пользователе</span>
-  </div>
-  <div class="main-container">
-    <section class="user-info">
-      <div class="user-info-header">
-        <h4>ada22</h4>
-        <button>
-          <fa-icon [icon]="faGear"></fa-icon>
-          Настройки
-        </button>
-      </div>
-
-      <div class="main-info">
-        <span>Клавиатура: </span>
-        <span>bloody Q135</span>
-
-        <span>Слепая печать: </span>
-        <span>владеет</span>
-
-        <span>Профессия: </span>
-        <span>скрыто</span>
-
-        <span>Страна\город: </span>
-        <span>Беларусь\Гомель</span>
-
-        <span>На Keyflex с: </span>
-        <span>03.08.2024</span>
-      </div>
-
-      <div class="other-info">
-        <div class="user-other">
-          <span>Другая информация:</span>
-          <p>Я - кто-то там и это история о том как я попал в зомби апокалипсис и выживал среди зомбакооов. Могу что-то
-            еще сюда написть но сейчас 2 ночи и мне очень лень придумывать нормальный текст для этого ужастика.</p>
+@if (!isSettings) {
+  <main>
+    <div class="main-header">
+      <h2>Профиль</h2>
+      <span>Статистика и информация о пользователе</span>
+    </div>
+    <div class="main-container">
+      <section class="user-info">
+        <div class="user-info-header">
+          <h4>ada22</h4>
+          <button (click)="setIsSettings()">
+            <fa-icon [icon]="faGear"></fa-icon>
+            Настройки
+          </button>
         </div>
-        <h4>Достижения</h4>
-        <div class="achieve-container">
-          <div class="active">
-            40
+
+        <div class="main-info">
+          <span>Клавиатура: </span>
+          <span>bloody Q135</span>
+
+          <span>Слепая печать: </span>
+          <span>владеет</span>
+
+          <span>Профессия: </span>
+          <span>скрыто</span>
+
+          <span>Страна\город: </span>
+          <span>Беларусь\Гомель</span>
+
+          <span>На Keyflex с: </span>
+          <span>03.08.2024</span>
+        </div>
+
+        <div class="other-info">
+          <div class="user-other">
+            <span>Другая информация:</span>
+            <p>Я - кто-то там и это история о том как я попал в зомби апокалипсис и выживал среди зомбакооов. Могу
+              что-то
+              еще сюда написть но сейчас 2 ночи и мне очень лень придумывать нормальный текст для этого ужастика.</p>
           </div>
-          <div class="active">
-            50
-          </div>
-          <div class="active">
-            60
-          </div>
-          <div class="active">
-            70
-          </div>
-          <div class="">
-            80
-          </div>
-          <div class="">
-            90
-          </div>
-          <div class="">
-            100
+          <h4>Достижения</h4>
+          <div class="achieve-container">
+            <div class="active">
+              40
+            </div>
+            <div class="active">
+              50
+            </div>
+            <div class="active">
+              60
+            </div>
+            <div class="active">
+              70
+            </div>
+            <div class="">
+              80
+            </div>
+            <div class="">
+              90
+            </div>
+            <div class="">
+              100
+            </div>
           </div>
         </div>
-      </div>
 
 
-    </section>
-  </div>
+      </section>
+    </div>
 
-  <div class="main-chart">
-    <h4>Результаты всех тестов</h4>
-    <apx-chart
-      [series]="mainChart.series"
-      [chart]="mainChart.chart"
-      [stroke]="mainChart.stroke"
-      [yaxis]="mainChart.yaxis"
-      [xaxis]="mainChart.xaxis"
-      [grid]="mainChart.grid"
-      [tooltip]="mainChart.tooltip"
-    ></apx-chart>
-  </div>
+    <div class="main-chart">
+      <h4>Результаты всех тестов</h4>
+      <apx-chart
+        [series]="mainChart.series"
+        [chart]="mainChart.chart"
+        [stroke]="mainChart.stroke"
+        [yaxis]="mainChart.yaxis"
+        [xaxis]="mainChart.xaxis"
+        [grid]="mainChart.grid"
+        [tooltip]="mainChart.tooltip"
+      ></apx-chart>
+    </div>
 
-  <div class="main-container">
+    <div class="main-container">
 
-    <section class="main-charts-container">
-      <div class="medium-chart">
-        <h5>Точность</h5>
-        <apx-chart
-          [series]="accuracyChartSeries"
-          [chart]="countChartOptions.chart"
-          [labels]="countChartOptions.labels"
-          [fill]="countChartOptions.fill"
-          [stroke]="countChartOptions.stroke"
-          [colors]="countChartOptions.colors"
-        ></apx-chart>
+      <section class="main-charts-container">
+        <div class="medium-chart">
+          <h5>Точность</h5>
+          <apx-chart
+            [series]="accuracyChartSeries"
+            [chart]="countChartOptions.chart"
+            [labels]="countChartOptions.labels"
+            [fill]="countChartOptions.fill"
+            [stroke]="countChartOptions.stroke"
+            [colors]="countChartOptions.colors"
+          ></apx-chart>
+          <div class="info-container">
+            <h5>Статистика: точность</h5>
+            <div>
+              <span>200 слов:</span>
+              <span>100</span>
+            </div>
+            <div>
+              <span>1000 слов:</span>
+              <span>59</span>
+            </div>
+            <div>
+              <span>Текст:</span>
+              <span>90</span>
+            </div>
+            <div>
+              <span>Английский:</span>
+              <span>36</span>
+            </div>
+            <div>
+              <span>Символьный:</span>
+              <span>43</span>
+            </div>
+            <div>
+              <span>Пользовательский:</span>
+              <span>100</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="medium-chart">
+          <h5>Посещаемость</h5>
+          <apx-chart
+            [series]="attendanceChartSeries"
+            [chart]='{type: "pie", height: 300}'
+            [labels]="countChartOptions.labels"
+            [fill]="countChartOptions.fill"
+            [stroke]="countChartOptions.stroke"
+            [colors]="countChartOptions.colors"
+          ></apx-chart>
+          <div class="info-container">
+            <h5>Статистика: посещаемость</h5>
+            <div>
+              <span>200 слов:</span>
+              <span>1001</span>
+            </div>
+            <div>
+              <span>1000 слов:</span>
+              <span>304</span>
+            </div>
+            <div>
+              <span>Текст:</span>
+              <span>96</span>
+            </div>
+            <div>
+              <span>Английский:</span>
+              <span>201</span>
+            </div>
+            <div>
+              <span>Символьный:</span>
+              <span>17</span>
+            </div>
+            <div>
+              <span>Пользовательский:</span>
+              <span>30</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="main-charts-container">
         <div class="info-container">
-          <h5>Статистика: точность</h5>
+          <h5>Статистика: последние результаты</h5>
           <div>
-            <span>200 слов:</span>
-            <span>100</span>
+            <span>Лучший результат:</span>
+            <span>80 сл. в минуту</span>
           </div>
           <div>
-            <span>1000 слов:</span>
-            <span>59</span>
+            <span>Худший результат:</span>
+            <span>35 сл. в минуту</span>
           </div>
           <div>
-            <span>Текст:</span>
-            <span>90</span>
+            <span>Средний результат:</span>
+            <span>61 сл. в минуту</span>
           </div>
           <div>
-            <span>Английский:</span>
-            <span>36</span>
+            <span>Лучшая точность:</span>
+            <span>97%</span>
           </div>
           <div>
-            <span>Символьный:</span>
-            <span>43</span>
+            <span>Худшая точность:</span>
+            <span>83%</span>
           </div>
           <div>
-            <span>Пользовательский:</span>
-            <span>100</span>
+            <span>Средняя точность:</span>
+            <span>95%</span>
+          </div>
+          <div>
+            <span>Популярный:</span>
+            <span>200 слов</span>
+          </div>
+          <div>
+            <span>Лучшая успеваемость:</span>
+            <span>200 слов</span>
+          </div>
+          <div>
+            <span>Лучшая точность:</span>
+            <span>200 слов</span>
           </div>
         </div>
-      </div>
+        <div class="main-chart" style="border-radius: 10px">
+          <h5>Последние 10 результатов</h5>
+          <apx-chart
+            [series]="lastResults.series"
+            [chart]="lastResults.chart"
+            [stroke]="lastResults.stroke"
+            [colors]="lastResults.colors"
+            [plotOptions]="lastResults.plotOptions"
+            [dataLabels]="lastResults.dataLabels"
+            [xaxis]="lastResults.xaxis"
+            [yaxis]="lastResults.yaxis"
+            [grid]="mainChart.grid"
+            [tooltip]="barChartOptions.tooltip"
+            [legend]="barChartOptions.legend"
+          ></apx-chart>
+        </div>
+      </section>
 
+    </div>
+  </main>
+} @else {
+  <main>
+    <div class="main-header">
+      <h2>Профиль</h2>
+      <span>Статистика и информация о пользователе</span>
+    </div>
+    <div class="main-container">
+      <section class="user-info">
+        <div class="user-info-header">
+          <h4>ada22</h4>
+          <button (click)="setIsSettings()">
+            <fa-icon [icon]="faGear"></fa-icon>
+            Отменить
+          </button>
+        </div>
+      </section>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        <h1>Настройка аккаунта KF</h1>
+        <label>
+          клавиатура
+          <input
+            formControlName="keyboard"
+            placeholder="название клавиатуры"
+          >
+        </label>
 
-      <div class="medium-chart">
-        <h5>Посещаемость</h5>
-        <apx-chart
-          [series]="attendanceChartSeries"
-          [chart]='{type: "pie", height: 300}'
-          [labels]="countChartOptions.labels"
-          [fill]="countChartOptions.fill"
-          [stroke]="countChartOptions.stroke"
-          [colors]="countChartOptions.colors"
-        ></apx-chart>
-        <div class="info-container">
-          <h5>Статистика: посещаемость</h5>
-          <div>
-            <span>200 слов:</span>
-            <span>1001</span>
-          </div>
-          <div>
-            <span>1000 слов:</span>
-            <span>304</span>
-          </div>
-          <div>
-            <span>Текст:</span>
-            <span>96</span>
-          </div>
-          <div>
-            <span>Английский:</span>
-            <span>201</span>
-          </div>
-          <div>
-            <span>Символьный:</span>
-            <span>17</span>
-          </div>
-          <div>
-            <span>Пользовательский:</span>
-            <span>30</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <label>
+          владение слепой печатью
+          <app-checkbox (click)="setIsTT()" [checked] = "isTT"></app-checkbox>
+        </label>
 
-    <section class="main-charts-container">
-      <div class="info-container">
-        <h5>Статистика: последние результаты</h5>
-        <div>
-          <span>Лучший результат:</span>
-          <span>80 сл. в минуту</span>
-        </div>
-        <div>
-          <span>Худший результат:</span>
-          <span>35 сл. в минуту</span>
-        </div>
-        <div>
-          <span>Средний результат:</span>
-          <span>61 сл. в минуту</span>
-        </div>
-        <div>
-          <span>Лучшая точность:</span>
-          <span>97%</span>
-        </div>
-        <div>
-          <span>Худшая точность:</span>
-          <span>83%</span>
-        </div>
-        <div>
-          <span>Средняя точность:</span>
-          <span>95%</span>
-        </div>
-        <div>
-          <span>Популярный:</span>
-          <span>200 слов</span>
-        </div>
-        <div>
-          <span>Лучшая успеваемость:</span>
-          <span>200 слов</span>
-        </div>
-        <div>
-          <span>Лучшая точность:</span>
-          <span>200 слов</span>
-        </div>
-      </div>
-      <div class="main-chart" style="border-radius: 10px">
-        <h5>Последние 10 результатов</h5>
-        <apx-chart
-          [series]="lastResults.series"
-          [chart]="lastResults.chart"
-          [stroke]="lastResults.stroke"
-          [colors]="lastResults.colors"
-          [plotOptions] = "lastResults.plotOptions"
-          [dataLabels] = "lastResults.dataLabels"
-          [xaxis] = "lastResults.xaxis"
-          [yaxis] = "lastResults.yaxis"
-          [grid]="mainChart.grid"
-          [tooltip]="barChartOptions.tooltip"б
-          [legend]="barChartOptions.legend"
-        ></apx-chart>
-      </div>
-    </section>
+        <label>
+          место проживания (страна\город)
+          <input
+            formControlName="location"
+            placeholder="Стнана\Город"
+          >
+        </label>
+        <label>
+          прочая информация
+          <textarea
+            formControlName="other"
+            placeholder="другая информация, которой вы бы хотели поделиться с другими пользователями"
+          ></textarea>
+        </label>
 
-  </div>
-</main>
+        <div>
+          <button>Сохранить</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+}

@@ -126,7 +126,7 @@
         <h5>Посещаемость</h5>
         <apx-chart
           [series]="attendanceChartSeries"
-          [chart]="countChartOptions.chart"
+          [chart]='{type: "pie", height: 300}'
           [labels]="countChartOptions.labels"
           [fill]="countChartOptions.fill"
           [stroke]="countChartOptions.stroke"

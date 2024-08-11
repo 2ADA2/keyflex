@@ -1,0 +1,29 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <h1>Вход в аккаунт KF</h1>
+  <label>
+    электронная почта или ник
+    <input
+      formControlName = "login"
+      placeholder="введите имя пользователя или почту"
+    >
+  </label>
+
+  <label>
+    пароль
+    <input
+      formControlName = "password"
+      type="password"
+      placeholder="введите пароль"
+    >
+
+  </label>
+  <button>Войти</button>
+  <div>
+    <span>нет аккаунта?</span>
+    <a routerLink="/register">пройти регистрацию</a>
+  </div>
+
+</form>

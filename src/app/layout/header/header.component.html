@@ -16,13 +16,13 @@
    training:href.includes('/training'),
    play:href.includes('/play'),
    about:href.includes('/about'),
-   user:href==='/profile'
+   user:href==='/profile' || href === '/login' || href === '/register'
    }">
     <a routerLink="/" [ngClass]="{active:href === '/'}">Главная</a>
     <a routerLink="/training" [ngClass]="{active:href.includes('/training')}">Тренировка</a>
     <a routerLink="/play" [ngClass]="{active:href.includes('/play')}">Играть</a>
     <a routerLink="/about" [ngClass]="{active:href.includes('/about')}">Проект</a>
-    <a routerLink="/profile" [ngClass]="{active:href === '/profile'}">Профиль</a>
+    <a routerLink="/profile" [ngClass]='{active:href === "/profile" || href === "/login" || href === "/register"}'>Профиль</a>
   </nav>
   <nav class="nav-compact">=</nav>
 </header>

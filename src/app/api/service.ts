@@ -11,12 +11,12 @@ import {TokenResponce} from "./authInterfaces";
 
 export class Service {
   http: HttpClient = inject(HttpClient);
-  baseApiUrl: string = environment.apiUrl+"/api/auth/";
+  baseApiUrl: string = environment.apiUrl + "/api/auth/";
   token: string | null = null;
   cookieService = inject(CookieService);
 
   isAuth(): boolean {
-    if(!this.token){
+    if (!this.token) {
       this.token = this.cookieService.get("token")
     }
     return !!this.token;
@@ -24,12 +24,11 @@ export class Service {
 
   login(payload: { username: string, password: string }) {
     const formData: FormData = new FormData()
-    console.log(this.baseApiUrl)
     formData.append("username", payload.username)
     formData.append("password", payload.password);
 
     return this.http.post<TokenResponce>(
-      this.baseApiUrl+"jwt/login",
+      this.baseApiUrl + "jwt/login",
       formData
     ).pipe(
       tap(val => {
@@ -39,16 +38,25 @@ export class Service {
     )
   }
 
-  register(payload: { name: string, password: string, email: string }){
-
+  register(payload: { name: string, password: string, email: string }) {
     return this.http.post<TokenResponce>(
-      this.baseApiUrl+"register",
+      this.baseApiUrl + "register",
       {
-        username:payload.name,
-        password:payload.password,
-        email:payload.email
+        username: payload.name,
+        password: payload.password,
+        email: payload.email
       }
     )
   }
 
+  saveStats(payload: { symbols: number, accuracy: number, type: string }) {
+    console.log(payload)
+    return this.http.post(
+      this.baseApiUrl + "register", {
+        symbols: payload.symbols,
+        accuracy: payload.accuracy,
+        type: payload.type,
+      }
+    )
+  }
 }

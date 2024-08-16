@@ -7,6 +7,8 @@ import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCircleInfo, faCross, faX} from "@fortawesome/free-solid-svg-icons";
 import {generateText} from "../../../functions/generateText";
+import {AuthAlertComponent} from "../../../components/auth-alert/auth-alert.component";
+import {Service} from "../../../api/service";
 
 @Component({
   selector: 'app-text-training',
@@ -18,6 +20,7 @@ import {generateText} from "../../../functions/generateText";
         NgClass,
         FaIconComponent,
         RouterLink,
+        AuthAlertComponent,
     ],
   templateUrl: './text-training.component.html',
   styleUrl: './text-training.component.scss'
@@ -25,6 +28,7 @@ import {generateText} from "../../../functions/generateText";
 
 export class TextTrainingComponent {
   @ViewChild("inputText", { static: true }) inputText!: ElementRef;
+  public service = inject(Service)
 
   public key: string[] = [];
   public text: string[] = ["загрузка..."];
@@ -127,6 +131,11 @@ export class TextTrainingComponent {
       this.inputText.nativeElement.blur()
       clearInterval(this.interval)
       this.value = "конец"
+      this.service.saveStats({
+        symbols: this.symbols,
+        accuracy: Number((this.rightW / (this.rightW + this.wrongW) * 100).toFixed(2)) || 0,
+        type: "text"
+      })
     }
 
     this.symbolsPerMin = this.symbols/(60 - this.time)*60;

@@ -2,6 +2,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {Service} from "../../api/service";
+import {faGoogle} from "@fortawesome/free-brands-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-register-form',
@@ -9,7 +11,8 @@ import {Service} from "../../api/service";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    FaIconComponent
   ],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss'
@@ -33,4 +36,6 @@ export class RegisterFormComponent {
         })
     }
   }
+
+    protected readonly faGoogle = faGoogle;
 }

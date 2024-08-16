@@ -12,6 +12,8 @@ import standart from "../../../../../public/assets/json/standart.json"
 import extended from "../../../../../public/assets/json/extanded.json"
 import english from "../../../../../public/assets/json/englush.json"
 import extrime from "../../../../../public/assets/json/extrime.json"
+import {AuthAlertComponent} from "../../../components/auth-alert/auth-alert.component";
+import {Service} from "../../../api/service";
 
 const types: { [key: string]: any } = {
   "standart": standart,
@@ -30,12 +32,14 @@ const types: { [key: string]: any } = {
         NgClass,
         FaIconComponent,
         RouterLink,
+        AuthAlertComponent,
     ],
   templateUrl: './words-training.component.html',
   styleUrls: ['./words-training.component.scss'] // corrected property name
 })
 export class WordsTrainingComponent {
   @ViewChild("inputText", { static: true }) inputText!: ElementRef;
+  public service = inject(Service)
 
   public route: ActivatedRoute = inject(ActivatedRoute);
   public type: string = this.route.snapshot.params['type'];
@@ -141,6 +145,11 @@ export class WordsTrainingComponent {
       this.inputText.nativeElement.blur()
       clearInterval(this.interval)
       this.value = "конец"
+      this.service.saveStats({
+        symbols: this.symbols,
+        accuracy: Number((this.rightW / (this.rightW + this.wrongW) * 100).toFixed(2)) || 0,
+        type: this.type
+      })
     }
 
     this.symbolsPerMin = this.symbols/(60 - this.time)*60;

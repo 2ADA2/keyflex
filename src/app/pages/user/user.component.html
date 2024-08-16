@@ -7,7 +7,7 @@
     <div class="main-container">
       <section class="user-info">
         <div class="user-info-header">
-          <h4>ada22</h4>
+          <h4>{{userInfo.name}}</h4>
           <button (click)="setIsSettings()">
             <fa-icon [icon]="faGear"></fa-icon>
             Настройки
@@ -16,49 +16,47 @@
 
         <div class="main-info">
           <span>Клавиатура: </span>
-          <span>bloody Q135</span>
+          <span>{{userInfo?.keyboard}}</span>
 
           <span>Слепая печать: </span>
-          <span>владеет</span>
+          <span>{{userInfo?.touchTyping}}</span>
 
           <span>Профессия: </span>
-          <span>скрыто</span>
+          <span>{{userInfo?.profession}}</span>
 
           <span>Страна\город: </span>
-          <span>Беларусь\Гомель</span>
+          <span>{{userInfo?.location}}</span>
 
           <span>На Keyflex с: </span>
-          <span>03.08.2024</span>
+          <span>{{userInfo?.date}}</span>
         </div>
 
         <div class="other-info">
           <div class="user-other">
             <span>Другая информация:</span>
-            <p>Я - кто-то там и это история о том как я попал в зомби апокалипсис и выживал среди зомбакооов. Могу
-              что-то
-              еще сюда написть но сейчас 2 ночи и мне очень лень придумывать нормальный текст для этого ужастика.</p>
+            <p>{{userInfo?.other}}</p>
           </div>
           <h4>Достижения</h4>
           <div class="achieve-container">
-            <div class="active">
+            <div [ngClass]="{active:userInfo.achievements.includes(40)}">
               40
             </div>
-            <div class="active">
+            <div [ngClass]="{active:userInfo.achievements.includes(50)}">
               50
             </div>
-            <div class="active">
+            <div [ngClass]="{active:userInfo.achievements.includes(60)}">
               60
             </div>
-            <div class="active">
+            <div [ngClass]="{active:userInfo.achievements.includes(70)}">
               70
             </div>
-            <div class="">
+            <div [ngClass]="{active:userInfo.achievements.includes(80)}">
               80
             </div>
-            <div class="">
+            <div [ngClass]="{active:userInfo.achievements.includes(90)}">
               90
             </div>
-            <div class="">
+            <div [ngClass]="{active:userInfo.achievements.includes(100)}">
               100
             </div>
           </div>

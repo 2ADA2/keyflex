@@ -8,6 +8,9 @@ import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
 import {faCircleInfo, faGear, faX} from "@fortawesome/free-solid-svg-icons";
 import {CheckboxComponent} from "../../../components/checkbox/checkbox.component";
+import {AuthAlertComponent} from "../../../components/auth-alert/auth-alert.component";
+import {Service} from "../../../api/service";
+import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 
 @Component({
   selector: 'app-custom',
@@ -20,6 +23,7 @@ import {CheckboxComponent} from "../../../components/checkbox/checkbox.component
     FaIconComponent,
     RouterLink,
     CheckboxComponent,
+    AuthAlertComponent,
   ],
   templateUrl: './custom.component.html',
   styleUrl: './custom.component.scss'
@@ -27,9 +31,9 @@ import {CheckboxComponent} from "../../../components/checkbox/checkbox.component
 export class CustomComponent {
   @ViewChild("inputText", {static: true}) inputText!: ElementRef;
   @ViewChild("inputSettings", {static: true}) inputSettings!: ElementRef;
+  public service = inject(Service)
 
-  public route: ActivatedRoute = inject(ActivatedRoute);
-  public type: string = this.route.snapshot.params['type'];
+  public type: string = "custom";
   public key: string[] = [];
   public text: string[] = ["привет", "Арсен"];
   public value: string = "";
@@ -148,6 +152,11 @@ export class CustomComponent {
       this.inputText.nativeElement.blur()
       clearInterval(this.interval)
       this.value = "конец"
+      this.service.saveStats({
+        symbols: this.symbols,
+        accuracy: Number((this.rightW / (this.rightW + this.wrongW) * 100).toFixed(2)) || 0,
+        type: this.type
+      })
     }
 
     this.symbolsPerMin = this.symbols / (60 - this.time) * 60;

@@ -31,10 +31,12 @@ main {
 }
 
 .home-container {
-  margin-top: 80px;
   display: grid;
   padding: 40px 10%;
+  padding-top: 80px;
   grid-column-gap: 100px;
+  backdrop-filter: blur(10px);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 
   & h2 {
     margin-bottom: 40px;
@@ -43,7 +45,7 @@ main {
 }
 
 .home-profit-container {
-  background-color: #f1f1f1;
+  background-color: rgba(241, 241, 241, 0.4);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
   position: relative;
@@ -221,7 +223,7 @@ main {
     max-width: 3000px;
 
     & a{
-      border: 1px solid black;
+      box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.5);
       border-radius: 20px;
       display: flex;
       flex-direction: column;
@@ -232,9 +234,24 @@ main {
       max-width: 500px;
       width: 40%;
       min-width: 300px;
+      position: relative;
+      transition-duration: 300ms;
+
+      &:first-child{
+        background: #082433;
+        color:white;
+      }
+      &:nth-child(2){
+        background: #39b5fa;
+        color:white;
+      }
+      &:nth-child(3){
+        background: #ffffff;
+      }
 
       &:hover{
-        background: #eeeeee;
+        transform: translateY(-10px);
+        box-shadow: -14px 14px 10px rgba(0, 0, 0, 0.5);
       }
 
       & img{
@@ -243,6 +260,21 @@ main {
         object-fit: contain;
       }
     }
+  }
+}
+.home-back{
+  position: fixed;
+  width: clamp(300px, 30vw, 700px);
+  height: clamp(300px, 30vw, 700px);
+  right: 5vw;
+  top:400px;
+  z-index: -1;
+  fill: #424242;
+}
+
+@media (min-width: 4000px) {
+  .home-back{
+    right:30vw;
   }
 }
 

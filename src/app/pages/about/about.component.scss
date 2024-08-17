@@ -4,13 +4,14 @@ aside{
   top:100px;
   bottom: 1000px;
   min-width: 200px;
-  width: 15%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   height: 220px;
   background: #1c1c1c;
   gap:2px;
   padding: 2px;
+  max-width: 500px;
 
   &::after, &::before{
     content: "";

@@ -1,4 +1,4 @@
-<section class="info-container">
+<section class="info-container" [ngClass]="{hidden:isAuth}">
   <h5>Нет аккаунта!</h5>
   <p>Некоторые функции, такие как подбор игроков и запись статистики отключены, чтобы активировать все функции приложения, <a routerLink = "/login">Войдите в аккаунт</a></p>
 </section>

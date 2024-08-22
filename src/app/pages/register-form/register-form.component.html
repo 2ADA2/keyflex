@@ -6,15 +6,15 @@
   <label>
     имя пользователя
     <input
-      formControlName = "login"
-      placeholder="введите имя пользователя или почту"
+      formControlName="login"
+      placeholder="введите имя пользователя"
     >
   </label>
 
   <label>
     электронная почта
     <input
-      formControlName = "email"
+      formControlName="email"
       placeholder="введите адрес электронной почты"
       type="email"
     >
@@ -23,7 +23,7 @@
   <label>
     пароль
     <input
-      formControlName = "password"
+      formControlName="password"
       type="password"
       placeholder="введите пароль"
     >
@@ -32,13 +32,13 @@
     повторите пароль
     <input
       type="password"
-      formControlName = "password_repeat"
-      placeholder="введите пароль"
+      formControlName="password_repeat"
+      placeholder="повторите пароль"
     >
   </label>
 
   <div>
-    <button type="submit">Войти</button>
+    <button type="submit">Регистрация</button>
     <button class="fast-login" type="button">
       <fa-icon [icon]="faGoogle"></fa-icon>
     </button>
@@ -49,4 +49,24 @@
     <a routerLink="/login">войдите</a>
   </div>
 
+  @if (error) {
+    <div class="auth-alert">{{ error }}
+      <div>
+        <fa-icon [icon]="faX" (click)="clear()"></fa-icon>
+      </div>
+    </div>
+  }
+
 </form>
+
+<div class="auth-background">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+    <g font-family="Arial" font-size="90" fill="white" text-anchor="middle">
+      <!-- Mirrored K -->
+      <text x="30" y="73" transform="scale(-1, 1) translate(-60, 0)">K</text>
+      <!-- F -->
+      <text x="60" y="73">F</text>
+    </g>
+  </svg>
+  Keyflex
+</div>

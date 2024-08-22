@@ -4,6 +4,7 @@ import {CookieService} from "ngx-cookie-service";
 import {environment} from "../../environments/environment";
 import {tap} from "rxjs";
 import {TokenResponce} from "./authInterfaces";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -12,8 +13,10 @@ import {TokenResponce} from "./authInterfaces";
 export class Service {
   http: HttpClient = inject(HttpClient);
   baseApiUrl: string = environment.apiUrl + "/api/auth/";
+  statsApiUrl: string = environment.apiUrl + "/api/stats/";
   token: string | null = null;
   cookieService = inject(CookieService);
+  router = inject(Router);
 
   isAuth(): boolean {
     if (!this.token) {
@@ -49,13 +52,29 @@ export class Service {
     )
   }
 
+  logout() {
+    this.router.navigate(["/login"])
+    this.http.post(
+      this.baseApiUrl + "jwt/logout",
+      {},
+      {headers: {'Authorization': `Bearer ${this.token}`}}
+    ).subscribe()
+    this.cookieService.delete("token");
+    this.token = null
+  }
+
   saveStats(payload: { symbols: number, accuracy: number, type: string }) {
-    console.log(payload)
     return this.http.post(
-      this.baseApiUrl + "register", {
-        symbols: payload.symbols,
-        accuracy: payload.accuracy,
-        type: payload.type,
+      this.statsApiUrl + "add_stats", {
+        symbols_per_minute: payload.symbols,
+        accuracy_percentage: payload.accuracy,
+        mode_type: payload.type,
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${this.token}`,
+          "ngrok-skip-browser-warning": "69420"
+        }
       }
     )
   }

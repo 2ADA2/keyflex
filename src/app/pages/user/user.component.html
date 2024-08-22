@@ -8,6 +8,9 @@
       <section class="user-info">
         <div class="user-info-header">
           <h4>{{userInfo.name}}</h4>
+          <button (click)="logout()">
+            Выход
+          </button>
           <button (click)="setIsSettings()">
             <fa-icon [icon]="faGear"></fa-icon>
             Настройки
@@ -16,19 +19,19 @@
 
         <div class="main-info">
           <span>Клавиатура: </span>
-          <span>{{userInfo?.keyboard}}</span>
+          <span>{{userInfo?.keyboard_type ?? "не указано"}}</span>
 
           <span>Слепая печать: </span>
-          <span>{{userInfo?.touchTyping}}</span>
+          <span>{{userInfo?.touchTyping ? "владеет" : "не владеет"}}</span>
 
           <span>Профессия: </span>
-          <span>{{userInfo?.profession}}</span>
+          <span>{{userInfo?.profession ?? "не указано"}}</span>
 
           <span>Страна\город: </span>
-          <span>{{userInfo?.location}}</span>
+          <span>{{userInfo?.location ?? "не указано"}}</span>
 
           <span>На Keyflex с: </span>
-          <span>{{userInfo?.date}}</span>
+          <span>{{userInfo?.register_date}}</span>
         </div>
 
         <div class="other-info">
@@ -69,7 +72,7 @@
     <div class="main-chart">
       <h4>Результаты всех тестов</h4>
       <apx-chart
-        [series]="mainChart.series"
+        [series]="mainStats"
         [chart]="mainChart.chart"
         [stroke]="mainChart.stroke"
         [yaxis]="mainChart.yaxis"
@@ -85,7 +88,7 @@
         <div class="medium-chart">
           <h5>Точность</h5>
           <apx-chart
-            [series]="accuracyChartSeries"
+            [series]="countChartSeries"
             [chart]="countChartOptions.chart"
             [labels]="countChartOptions.labels"
             [fill]="countChartOptions.fill"
@@ -246,7 +249,7 @@
         <label>
           клавиатура
           <input
-            formControlName="keyboard"
+            formControlName="keyboard_type"
             placeholder="название клавиатуры"
           >
         </label>
@@ -254,6 +257,13 @@
         <label>
           владение слепой печатью
           <app-checkbox (click)="setIsTT()" [checked] = "isTT"></app-checkbox>
+        </label>
+        <label>
+          профессия
+          <input
+            formControlName="profession"
+            placeholder="ваша профессия"
+          >
         </label>
 
         <label>
@@ -266,7 +276,7 @@
         <label>
           прочая информация
           <textarea
-            formControlName="other"
+            formControlName="about_user"
             placeholder="другая информация, которой вы бы хотели поделиться с другими пользователями"
           ></textarea>
         </label>

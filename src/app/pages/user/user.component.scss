@@ -23,6 +23,7 @@ h4:after {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    gap:5px;
 
     & h4 {
       flex: 1 1 auto;
@@ -30,8 +31,8 @@ h4:after {
 
     & button {
       font-size: 24px;
-      width: 200px;
       height: 60px;
+      padding: 0 40px;
       border-radius: 4px 4px 0 0;
     }
 
@@ -190,3 +191,34 @@ h4:after {
   }
 }
 
+@media (max-width: 1450px) {
+  .user-info{
+    display: flex;
+    flex-direction: column;
+
+    & .main-info{
+      margin-top:20px;
+      grid-template-rows: repeat(5,40px);
+    }
+    & .other-info{
+      margin-top:20px;
+    }
+  }
+
+  .main-charts-container{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .medium-chart{
+    min-width: 700px;
+    width: 700px;
+  }
+
+  .info-container{
+    min-width: 700px;
+    width: 700px;
+  }
+
+}

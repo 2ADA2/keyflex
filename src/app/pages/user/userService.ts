@@ -5,7 +5,7 @@ import {environment} from "../../../environments/environment";
 
 export interface UserInfo {
   name: string,
-  keyboard:string,
+  keyboard: string,
   touchTyping: boolean,
   profession: string,
   location: string,
@@ -19,24 +19,51 @@ export interface UserInfo {
 })
 
 
-
 export class UserService {
   http = inject(HttpClient)
   baseApiUrl: string = environment.apiUrl + "/api/";
   cookieService = inject(CookieService);
 
-  getUserInfo (){
+  getUserInfo() {
     return this.http.get<UserInfo>(
-      this.baseApiUrl + "getUserInfo",
-      {headers:{access_token:this.cookieService.get("token")}}
+      this.baseApiUrl + "profiles/get_info",
+      {
+        headers: {
+          'Authorization': `Bearer ${this.cookieService.get("token")}`,
+          "ngrok-skip-browser-warning": "69420"
+        }
+      }
     )
   }
 
-  setUserInfo(payload: {keyboard:string, touchTyping:boolean, profession:string, location:string, other:string}) {
-    return this.http.post(
-      this.baseApiUrl + "setUserInfo",
+  setUserInfo(payload: {
+    keyboard: string,
+    touchTyping: boolean,
+    profession: string,
+    location: string,
+    other: string
+  }) {
+    return this.http.patch(
+      this.baseApiUrl + "profiles/update",
       payload,
-      {headers:{access_token:this.cookieService.get("token")}}
+      {
+        headers: {
+          'Authorization': `Bearer ${this.cookieService.get("token")}`,
+          "ngrok-skip-browser-warning": "69420"
+        }
+      }
+    )
+  }
+
+  getStats() {
+    return this.http.get<any>(
+      this.baseApiUrl + "stats/get_all_stats",
+      {
+        headers: {
+          'Authorization': `Bearer ${this.cookieService.get("token")}`,
+          "ngrok-skip-browser-warning": "69420"
+        }
+      }
     )
   }
 }

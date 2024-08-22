@@ -16,10 +16,10 @@ import {AuthAlertComponent} from "../../../components/auth-alert/auth-alert.comp
 import {Service} from "../../../api/service";
 
 const types: { [key: string]: any } = {
-  "standart": standart,
+  "standard": standart,
   "extended": extended,
   "english" : english,
-  "extrime" : extrime
+  "extreme" : extrime
 };
 
 @Component({
@@ -47,7 +47,7 @@ export class WordsTrainingComponent {
   public key: string[] = [];
   public text: string[] = ["привет", "Арсен"];
   public value: string = "";
-  public isSymbols = this.type === "extrime";
+  public isSymbols = this.type === "extreme";
 
   public symbols: number = 0;
   public symbolsPerMin: number = 0;
@@ -149,7 +149,7 @@ export class WordsTrainingComponent {
         symbols: this.symbols,
         accuracy: Number((this.rightW / (this.rightW + this.wrongW) * 100).toFixed(2)) || 0,
         type: this.type
-      })
+      }).subscribe()
     }
 
     this.symbolsPerMin = this.symbols/(60 - this.time)*60;
@@ -170,7 +170,7 @@ export class WordsTrainingComponent {
 
   restart(){
     this.text = generate(types[this.type].words, 300, this.isSymbols)
-    this.time = 60
+    this.time = 10
     this.symbols = 0
     this.isStart = false
     this.isEnd = false

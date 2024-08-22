@@ -25,7 +25,7 @@ form {
 
     & input {
       width: 50%;
-      min-width: 300px;
+      min-width: 400px;
       max-width: 1000px;
       height: 50px;
       font-size: 30px;
@@ -52,4 +52,30 @@ form {
       width: 60px;
     }
   }
+}
+.auth-background{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
+  justify-content: center;
+  background-color: rgba(28, 28, 28, 0.8);
+  width: 100vw;
+  height: 140vh;
+  z-index: -1;
+  left:50vw;
+  top:0;
+  rotate:10deg;
+  font-size: 7vw;
+  color:white;
+  & svg{
+    width: 40%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .auth-background{
+    display: none;
+  }
+
 }

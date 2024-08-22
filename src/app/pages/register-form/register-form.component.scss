@@ -13,9 +13,10 @@ form {
   }
 
   & button {
-    width: 200px;
+    width: auto;
     height: 50px;
     font-size: 24px;
+    padding: 0 40px;
   }
 
   & label {
@@ -25,10 +26,10 @@ form {
 
     & input {
       width: 50%;
-      min-width: 300px;
+      min-width: 400px;
       max-width: 1000px;
       height: 50px;
-      font-size: 30px;
+      font-size: clamp(16px, 2vw, 30px);
       line-height: 50px;
       font-family: "JetBrains Mono SemiBold";
       background-color: white;
@@ -39,7 +40,7 @@ form {
   }
 
   & div{
-    font-size: 24px;
+    font-size: clamp(16px, 2vw, 24px);
     & a{
       margin-left: 10px;
       &:hover{
@@ -50,6 +51,34 @@ form {
     & .fast-login{
       margin-left: 20px;
       width: 60px;
+      padding: 0;
     }
   }
+}
+
+.auth-background{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
+  justify-content: center;
+  background-color: rgba(28, 28, 28, 0.8);
+  width: 100vw;
+  height: 140vh;
+  z-index: -1;
+  left:50vw;
+  top:0;
+  rotate:10deg;
+  font-size: 7vw;
+  color:white;
+  & svg{
+    width: 40%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .auth-background{
+    display: none;
+  }
+
 }

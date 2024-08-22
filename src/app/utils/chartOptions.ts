@@ -1,37 +1,8 @@
 import {ChartLineOptions} from "../pages/user/user.component";
 
 export const mainChart: ChartLineOptions = {
-  series: [
-    {
-      name: "200 слов",
-      type: 'line',
-      data: [{x: 1, y: 0}, {x: 2, y: 62}, {x: 3, y: 61}, {x: 4, y: 63}, {x: 5, y: 62}, {x: 6, y: 70}, {
-        x: 7,
-        y: 58
-      }, {x: 8, y: 65}, {x: 9, y: 60}, {x: 10, y: 72}],
-      color: "#4fd9c6"
-    },
-    {
-      name: "1000 слов",
-      type: 'line',
-      data: [{x: 1, y: 0}, {x: 2, y: 46}, {x: 3, y: 53}, {x: 4, y: 49}, {x: 5, y: 59}, {x: 6, y: 41}, {
-        x: 7,
-        y: 47
-      }, {x: 8, y: 45}, {x: 9, y: 39}, {x: 10, y: 41}],
-      color: "#bce544"
-    },
-    {
-      name: "Текст",
-      type: 'line',
-      data: [{x: 1, y: 0}, {x: 2, y: 41}, {x: 3, y: 36}, {x: 4, y: 29}, {x: 5, y: 35}, {x: 6, y: 37}, {
-        x: 7,
-        y: 27
-      }, {x: 8, y: 36}, {x: 9, y: 40}, {x: 10, y: 34}],
-      color: "#f146d8"
-    }
-  ],
   stroke: {
-    width: [3, 3, 3], // Устанавливаем ширину линий
+    width: 4, // Устанавливаем ширину линий
     curve: 'smooth' // Сглаживание линий
   },
   chart: {
@@ -56,7 +27,7 @@ export const mainChart: ChartLineOptions = {
     show: false
   },
   tooltip: {
-    theme: 'dark', // Темная тема для всплывающей подсказки
+    theme: 'dark',
     style: {
       fontSize: '12px',
       fontFamily: 'Arial, sans-serif'

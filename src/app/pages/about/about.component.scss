@@ -12,6 +12,7 @@ aside{
   gap:2px;
   padding: 2px;
   max-width: 500px;
+  z-index: 1000;
 
   &::after, &::before{
     content: "";

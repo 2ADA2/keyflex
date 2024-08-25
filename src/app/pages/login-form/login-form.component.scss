@@ -1,9 +1,14 @@
+main{
+  max-width: none;
+}
 form {
   min-height: 100vh;
   padding: 40px 10%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
+  overflow: hidden;
 
   & h1 {
     border-left: 10px solid black;

@@ -1,40 +1,44 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <h1>Вход в аккаунт KF</h1>
-  <label>
-    электронная почта или ник
-    <input formControlName="login" placeholder="введите имя пользователя или почту">
-  </label>
+<main>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>Вход в аккаунт KF</h1>
+    <label>
+      электронная почта или ник
+      <input formControlName="login" placeholder="введите имя пользователя или почту">
+    </label>
 
-  <label>
-    пароль
-    <input formControlName="password" type="password" placeholder="введите пароль">
-  </label>
+    <label>
+      пароль
+      <input formControlName="password" type="password" placeholder="введите пароль">
+    </label>
 
-  <div>
-    <button type="submit">Войти</button>
-    <button class="fast-login" type="button" (click)="googleLogin($event)">
-      <fa-icon [icon]="faGoogle"></fa-icon>
-    </button>
+    <div>
+      <button type="submit">Войти</button>
+      <button class="fast-login" type="button" (click)="googleLogin($event)">
+        <fa-icon [icon]="faGoogle"></fa-icon>
+      </button>
 
+    </div>
+
+    <div>
+      <span>нет аккаунта?</span>
+      <a routerLink="/register">пройти регистрацию</a>
+    </div>
+    @if(error){
+      <div class="auth-alert">{{error}} <div><fa-icon [icon]="faX" (click)="clear()"></fa-icon></div></div>
+    }
+
+  </form>
+
+  <div class="auth-background">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+      <g font-family="Arial" font-size="90" fill="white" text-anchor="middle">
+        <!-- Mirrored K -->
+        <text x="30" y="73" transform="scale(-1, 1) translate(-60, 0)">K</text>
+        <!-- F -->
+        <text x="60" y="73">F</text>
+      </g>
+    </svg>
+    Keyflex
   </div>
 
-  <div>
-    <span>нет аккаунта?</span>
-    <a routerLink="/register">пройти регистрацию</a>
-  </div>
-  @if(error){
-    <div class="auth-alert">{{error}} <div><fa-icon [icon]="faX" (click)="clear()"></fa-icon></div></div>
-  }
-</form>
-
-<div class="auth-background">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
-    <g font-family="Arial" font-size="90" fill="white" text-anchor="middle">
-      <!-- Mirrored K -->
-      <text x="30" y="73" transform="scale(-1, 1) translate(-60, 0)">K</text>
-      <!-- F -->
-      <text x="60" y="73">F</text>
-    </g>
-  </svg>
-  Keyflex
-</div>
+</main>

@@ -13,6 +13,8 @@ main{
   max-width: 2700px;
   margin:auto;
   min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
 }
 .main-header{
   padding: 40px 10%;

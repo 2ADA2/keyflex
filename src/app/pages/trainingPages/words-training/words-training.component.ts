@@ -170,7 +170,7 @@ export class WordsTrainingComponent {
 
   restart(){
     this.text = generate(types[this.type].words, 300, this.isSymbols)
-    this.time = 10
+    this.time = 60
     this.symbols = 0
     this.isStart = false
     this.isEnd = false

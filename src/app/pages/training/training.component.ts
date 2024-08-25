@@ -4,16 +4,18 @@ import {RouterLink} from "@angular/router";
 import {faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {AuthAlertComponent} from "../../components/auth-alert/auth-alert.component";
+import {KeyboardComponent} from "../../components/keyboard/keyboard.component";
 
 @Component({
   selector: 'app-training',
   standalone: true,
-    imports: [
-        DemoComponent,
-        RouterLink,
-        FaIconComponent,
-        AuthAlertComponent
-    ],
+  imports: [
+    DemoComponent,
+    RouterLink,
+    FaIconComponent,
+    AuthAlertComponent,
+    KeyboardComponent
+  ],
   templateUrl: './training.component.html',
   styleUrl: './training.component.scss'
 })

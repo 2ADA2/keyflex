@@ -1,4 +1,5 @@
 import {ApexAxisChartSeries, ApexNonAxisChartSeries} from "ng-apexcharts";
+import translate from "../../../public/assets/json/translate.json"
 
 export interface MainChartInput {
   [key: string]: Object[]
@@ -69,4 +70,12 @@ export const createAttendanceChartData = (stats: MainChartInput) : ApexNonAxisCh
 
 export const createCountChartSeries = (stats: MainChartInput) : ApexNonAxisChartSeries => {
   return Object.values(stats).map((e:any) => e)
+}
+
+export const createBarColorScheme = (arr:string[]) : string[] => {
+    return arr.map((e:any) => {
+      const colors:string[] = ["#41ff6b", "#bdff57", "#ff7305", "#5532bd","#FF2323FF","#ff05f3"]
+      const values:string[] = Object.keys(translate.modes)
+      return colors[values.indexOf(e)]
+    })
 }

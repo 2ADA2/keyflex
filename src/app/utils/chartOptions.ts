@@ -134,7 +134,6 @@ export const barChartOptions: any = {
       },
     }
   },
-  colors: ['#33FF57', '#AF33FF', '#33FF57', '#33FF57', '#33FF57', '#FFA833', '#33FF57', '#33FF57', '#33FF57', '#33FF57'],
   legend: {
     show: false
   }

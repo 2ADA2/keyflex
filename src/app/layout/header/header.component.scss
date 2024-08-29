@@ -142,3 +142,31 @@ header {
     }
   }
 }
+
+.theme{
+  position: absolute;
+  right:30px;
+  top:20px;
+  font-size: 30px;
+  &:hover{
+    background-color: #1c1c1c;
+  }
+}
+.theme-svg{
+  transition-duration: 150ms;
+  position: absolute;
+  right:0;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px white;
+}
+.moon{
+  right:10px;
+}
+
+.dark-on{
+  opacity: 0;
+  rotate:90deg;
+  font-size: 24px;
+}
+
+

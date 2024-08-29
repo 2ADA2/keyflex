@@ -25,4 +25,8 @@
     <a routerLink="/profile" [ngClass]='{active:href === "/profile" || href === "/login" || href === "/register"}'>Профиль</a>
   </nav>
   <nav class="nav-compact">=</nav>
+  <button class = "theme" (click)="setIsDark()">
+    <fa-icon [icon]="faCircle" class="theme-svg sun" [ngClass]="{'dark-on':isDark}"></fa-icon>
+    <fa-icon [icon]="faMoon" class="theme-svg moon" [ngClass]="{'dark-on':!isDark}"></fa-icon>
+  </button>
 </header>

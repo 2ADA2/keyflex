@@ -41,25 +41,25 @@
           </div>
           <h4>Достижения</h4>
           <div class="achieve-container">
-            <div [ngClass]="{active:userInfo.achievements.includes(40)}">
+            <div [ngClass]="{active:userInfo.achievements.forty_characters_per_minute}">
               40
             </div>
-            <div [ngClass]="{active:userInfo.achievements.includes(50)}">
+            <div [ngClass]="{active:userInfo.achievements.forty_characters_per_minute}">
               50
             </div>
-            <div [ngClass]="{active:userInfo.achievements.includes(60)}">
+            <div [ngClass]="{active:userInfo.achievements.forty_characters_per_minute}">
               60
             </div>
-            <div [ngClass]="{active:userInfo.achievements.includes(70)}">
+            <div [ngClass]="{active:userInfo.achievements.forty_characters_per_minute}">
               70
             </div>
-            <div [ngClass]="{active:userInfo.achievements.includes(80)}">
+            <div [ngClass]="{active:userInfo.achievements.forty_characters_per_minute}">
               80
             </div>
-            <div [ngClass]="{active:userInfo.achievements.includes(90)}">
+            <div [ngClass]="{active:userInfo.achievements.forty_characters_per_minute}">
               90
             </div>
-            <div [ngClass]="{active:userInfo.achievements.includes(100)}">
+            <div [ngClass]="{active:userInfo.achievements.forty_characters_per_minute}">
               100
             </div>
           </div>
@@ -70,7 +70,7 @@
     </div>
 
     <div class="main-chart">
-      <h4>Результаты всех тестов</h4>
+      <h4>Результаты последних 75 тестов</h4>
       <apx-chart
         [series]="mainStats"
         [chart]="mainChart.chart"
@@ -99,27 +99,27 @@
             <h5>Статистика: точность</h5>
             <div>
               <span>200 слов:</span>
-              <span>100</span>
+              <span>{{accuracyData[0]}}%</span>
             </div>
             <div>
               <span>1000 слов:</span>
-              <span>59</span>
+              <span>{{accuracyData[1]}}%</span>
             </div>
             <div>
               <span>Текст:</span>
-              <span>90</span>
+              <span>{{accuracyData[2]}}%</span>
             </div>
             <div>
               <span>Английский:</span>
-              <span>36</span>
+              <span>{{accuracyData[3]}}%</span>
             </div>
             <div>
               <span>Символьный:</span>
-              <span>43</span>
+              <span>{{accuracyData[4]}}%</span>
             </div>
             <div>
               <span>Пользовательский:</span>
-              <span>100</span>
+              <span>{{accuracyData[5]}}%</span>
             </div>
           </div>
         </div>
@@ -139,27 +139,27 @@
             <h5>Статистика: посещаемость</h5>
             <div>
               <span>200 слов:</span>
-              <span>1001</span>
+              <span>{{classesData[0]}}</span>
             </div>
             <div>
               <span>1000 слов:</span>
-              <span>304</span>
+              <span>{{classesData[1]}}</span>
             </div>
             <div>
               <span>Текст:</span>
-              <span>96</span>
+              <span>{{classesData[2]}}</span>
             </div>
             <div>
               <span>Английский:</span>
-              <span>201</span>
+              <span>{{classesData[3]}}</span>
             </div>
             <div>
               <span>Символьный:</span>
-              <span>17</span>
+              <span>{{classesData[4]}}</span>
             </div>
             <div>
               <span>Пользовательский:</span>
-              <span>30</span>
+              <span>{{classesData[5]}}</span>
             </div>
           </div>
         </div>
@@ -170,39 +170,39 @@
           <h5>Статистика: последние результаты</h5>
           <div>
             <span>Лучший результат:</span>
-            <span>80 сл. в минуту</span>
+            <span>{{lastStats.symbols_per_minute_stats.the_best_result}} сл. в минуту</span>
           </div>
           <div>
             <span>Худший результат:</span>
-            <span>35 сл. в минуту</span>
+            <span>{{lastStats.symbols_per_minute_stats.the_worst_result}} сл. в минуту</span>
           </div>
           <div>
             <span>Средний результат:</span>
-            <span>61 сл. в минуту</span>
+            <span>{{lastStats.symbols_per_minute_stats.average_result}} сл. в минуту</span>
           </div>
           <div>
             <span>Лучшая точность:</span>
-            <span>97%</span>
+            <span>{{lastStats.accuracy_stats.the_best_result}}%</span>
           </div>
           <div>
             <span>Худшая точность:</span>
-            <span>83%</span>
+            <span>{{lastStats.accuracy_stats.the_worst_result}}%</span>
           </div>
           <div>
             <span>Средняя точность:</span>
-            <span>95%</span>
+            <span>{{lastStats.accuracy_stats.average_result}}%</span>
           </div>
           <div>
             <span>Популярный:</span>
-            <span>200 слов</span>
+            <span>{{lastStats.the_most_popular_mode}}</span>
           </div>
           <div>
             <span>Лучшая успеваемость:</span>
-            <span>200 слов</span>
+            <span>{{lastStats.smp_best_mode}}</span>
           </div>
           <div>
             <span>Лучшая точность:</span>
-            <span>200 слов</span>
+            <span>{{lastStats.accuracy_best_mode}}</span>
           </div>
         </div>
         <div class="main-chart" style="border-radius: 10px">

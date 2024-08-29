@@ -1,0 +1,10 @@
+{
+  "modes": {
+    "standard_mode" : "200 сл.",
+    "extended_mode" : "1000 сл.",
+    "text_mode" : "текст",
+    "english_mode" : "англ.",
+    "extreme_mode" : "символы",
+    "custom_mode" : "пользов."
+  }
+}

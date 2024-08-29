@@ -57,7 +57,19 @@ export class UserService {
 
   getStats() {
     return this.http.get<any>(
-      this.baseApiUrl + "stats/get_all_stats",
+      this.baseApiUrl + "stats/get_modes_stats_data",
+      {
+        headers: {
+          'Authorization': `Bearer ${this.cookieService.get("token")}`,
+          "ngrok-skip-browser-warning": "69420"
+        }
+      }
+    )
+  }
+
+  getLastest(){
+    return this.http.get<any>(
+      this.baseApiUrl + "stats/get_last_sessions_stats",
       {
         headers: {
           'Authorization': `Bearer ${this.cookieService.get("token")}`,

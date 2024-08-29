@@ -68,7 +68,7 @@ export class Service {
       this.statsApiUrl + "add_stats", {
         symbols_per_minute: payload.symbols,
         accuracy_percentage: payload.accuracy,
-        mode_type: payload.type,
+        mode_type: payload.type + "_mode",
       },
       {
         headers: {

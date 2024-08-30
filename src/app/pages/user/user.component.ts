@@ -22,7 +22,7 @@ import {barChartOptions, countChart, mainChart} from "../../utils/chartOptions";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faGear, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {CheckboxComponent} from "../../components/checkbox/checkbox.component";
 import {UserInfo, UserService} from "./userService";
 import {NgClass} from "@angular/common";
@@ -80,6 +80,9 @@ export class UserComponent {
   public userService: UserService = inject(UserService);
   public service: Service = inject(Service);
 
+  public route: ActivatedRoute = inject(ActivatedRoute);
+  public activateToken: string = this.route.snapshot.params['token'];
+
   form: FormGroup = new FormGroup({
     keyboard_type: new FormControl(null),
     location: new FormControl(null),
@@ -106,9 +109,17 @@ export class UserComponent {
   public lastResults: any
 
   constructor() {
-    //@ts-ignore
+
     this.userService.getUserInfo()
       .subscribe(val => this.userInfo = val)
+
+    if(this.activateToken){
+      this.userService.activate().subscribe(() => {
+        this.userService.getUserInfo()
+          .subscribe(val => this.userInfo = val)
+      })
+    }
+
     this.userService.getStats()
       .subscribe(val => {
         this.accuracyData = Object.values(val.average_accuracy_stats)

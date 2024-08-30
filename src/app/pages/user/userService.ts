@@ -78,4 +78,16 @@ export class UserService {
       }
     )
   }
+
+  activate(){
+    return this.http.get<any>(
+      this.baseApiUrl + "profiles/get_info",
+      {
+        headers: {
+          'Authorization': `Bearer ${this.cookieService.get("token")}`,
+          "ngrok-skip-browser-warning": "69420"
+        }
+      }
+    )
+  }
 }

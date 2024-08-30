@@ -31,6 +31,12 @@ export const routes: Routes = [
     ],
     canActivate: [accessGuard]
   },
+  {
+    path: "", children: [
+      {path: 'profile/:token', component: UserComponent},
+    ],
+    canActivate: [accessGuard]
+  },
 
   {
     path: "", children: [

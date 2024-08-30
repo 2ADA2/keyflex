@@ -19,6 +19,5 @@ export class AuthAlertComponent {
 
   constructor() {
     this.isAuth = this.service.isAuth();
-    console.log(this.isAuth)
   }
 }

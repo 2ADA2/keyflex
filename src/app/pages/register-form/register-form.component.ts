@@ -59,7 +59,7 @@ export class RegisterFormComponent {
     }, 1)
   }
 
-    protected readonly faGoogle = faGoogle;
+  protected readonly faGoogle = faGoogle;
   protected readonly faCross = faCross;
   protected readonly faX = faX;
 }

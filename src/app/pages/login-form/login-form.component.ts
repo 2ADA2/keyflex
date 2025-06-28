@@ -42,6 +42,7 @@ export class LoginFormComponent {
       }
 
       if (!this.error) {
+        localStorage.setItem("name", this.form.value.name)
         //@ts-ignore
         this.service.login({username: this.form.value.login, password: this.form.value.password})
           .subscribe(() => {

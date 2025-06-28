@@ -76,12 +76,16 @@ export type ChartLineOptions = {
 })
 
 export class UserComponent {
+  public isForbidden :boolean = false
   public isSettings: boolean = false;
+  public isLoading : boolean = true
   public userService: UserService = inject(UserService);
   public service: Service = inject(Service);
 
   public route: ActivatedRoute = inject(ActivatedRoute);
   public activateToken: string = this.route.snapshot.params['token'];
+
+  public timer :number = 0
 
   form: FormGroup = new FormGroup({
     keyboard_type: new FormControl(null),
@@ -91,14 +95,9 @@ export class UserComponent {
   })
   isTT: boolean = false
 
-  public mainChart: ChartLineOptions = mainChart;
-
-  public countChartOptions: ChartPieOptions = countChart;
-
-
-
   public userInfo: any
-
+  public mainChart: ChartLineOptions = mainChart;
+  public countChartOptions: ChartPieOptions = countChart;
   public mainStats: ApexAxisChartSeries = []
   public countChartSeries: ApexNonAxisChartSeries = []
   public attendanceChartSeries: ApexNonAxisChartSeries = []
@@ -110,72 +109,79 @@ export class UserComponent {
 
   constructor() {
 
-    this.userService.getUserInfo()
-      .subscribe(val => this.userInfo = val)
+    this.userService.getUserInfo().subscribe(next => {
+        this.userInfo = next
+        this.isLoading = false
 
-    if(this.activateToken){
-      this.userService.activate().subscribe(() => {
-        this.userService.getUserInfo()
-          .subscribe(val => this.userInfo = val)
-      })
-    }
-
-    this.userService.getStats()
-      .subscribe(val => {
-        this.accuracyData = Object.values(val.average_accuracy_stats)
-        this.classesData = Object.values(val.number_training_sessions_stats)
-        this.mainStats = createMainChartData(val.symbols_per_minute_stats)
-        //calc mainStats
-        const mainXMax = Math.max(...this.mainStats.map((e: any) => e.data.length))
-        const mainYMax = Math.max(...this.mainStats.map((e: any) => {
-          return Math.max(...e.data.map((arr: any) => arr.y))
-        }))
-
-        mainChart.xaxis = {
-          min: 0,
-          max: (mainXMax > 100) ? mainXMax + 10 : 100,
-          labels: {
-            show: false
-          }
-        }
-        mainChart.yaxis = {
-          min: 0,
-          max: (mainYMax > 100) ? mainYMax + 20 : 100,
+        if(this.activateToken){
+          this.userService.activate().subscribe(() => {
+            this.userService.getUserInfo()
+              .subscribe(val => this.userInfo = val)
+          })
         }
 
-        //calc accuracy
-        this.attendanceChartSeries = createAttendanceChartData(val.number_training_sessions_stats)
-        this.countChartSeries = createCountChartSeries(val.average_accuracy_stats)
+        this.userService.getStats()
+          .subscribe(val => {
+            this.accuracyData = Object.values(val.average_accuracy_stats)
+            this.classesData = Object.values(val.number_training_sessions_stats)
+            this.mainStats = createMainChartData(val.symbols_per_minute_stats)
+            //calc mainStats
+            const mainXMax = Math.max(...this.mainStats.map((e: any) => e.data.length))
+            const mainYMax = Math.max(...this.mainStats.map((e: any) => {
+              return Math.max(...e.data.map((arr: any) => arr.y))
+            }))
 
-        //calc classes
+            mainChart.xaxis = {
+              min: 0,
+              max: (mainXMax > 100) ? mainXMax + 10 : 100,
+              labels: {
+                show: false
+              }
+            }
+            mainChart.yaxis = {
+              min: 0,
+              max: (mainYMax > 100) ? mainYMax + 20 : 100,
+            }
 
-      })
-    this.userService.getLastest().subscribe((val) => {
+            //calc accuracy
+            this.attendanceChartSeries = createAttendanceChartData(val.number_training_sessions_stats)
+            this.countChartSeries = createCountChartSeries(val.average_accuracy_stats)
 
-      this.lastStats = {
-        ...val,
-        //@ts-ignore
-        the_most_popular_mode:translate.modes[val.the_most_popular_mode],
-        //@ts-ignore
-        smp_best_mode:translate.modes[val.smp_best_mode],
-        //@ts-ignore
-        accuracy_best_mode:translate.modes[val.accuracy_best_mode]
-      }
+            //calc classes
 
-      this.lastResults = {
-        ...barChartOptions,
-        xaxis: {
-          categories: val.modes_types.map((e:any) => {
+          })
+        this.userService.getLastest().subscribe((val) => {
+
+          this.lastStats = {
+            ...val,
             //@ts-ignore
-            return translate.modes[e]
-          }),
-        },
-        series: [{
-          data: val.symbols_per_minute_values.map((e:any) => e/5)
-        }],
-        colors:createBarColorScheme(val.modes_types)
-      }
-    })
+            the_most_popular_mode:translate.modes[val.the_most_popular_mode],
+            //@ts-ignore
+            smp_best_mode:translate.modes[val.smp_best_mode],
+            //@ts-ignore
+            accuracy_best_mode:translate.modes[val.accuracy_best_mode]
+          }
+
+          this.lastResults = {
+            ...barChartOptions,
+            xaxis: {
+              categories: val.modes_types.map((e:any) => {
+                //@ts-ignore
+                return translate.modes[e]
+              }),
+            },
+            series: [{
+              data: val.symbols_per_minute_values.map((e:any) => e/5)
+            }],
+            colors:createBarColorScheme(val.modes_types)
+          }
+        })
+      },
+        error => {
+          this.isForbidden = true
+          this.isLoading = false
+          return
+        })
   }
 
   onSubmit() {
@@ -204,6 +210,10 @@ export class UserComponent {
 
   logout() {
     this.service.logout()
+  }
+
+  verify(){
+    this.userService.verifyEmail().subscribe()
   }
 
   protected readonly faGear = faGear;

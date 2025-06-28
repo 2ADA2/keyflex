@@ -1,4 +1,11 @@
-@if (!isSettings) {
+@if(isLoading){
+  <main>
+    <div class="main-header">
+      <h2>Загрузка профиля</h2>
+      <span>подождите, идёт загрузка...</span>
+    </div>
+  </main>
+} @else if (!isSettings && !isForbidden) {
   <main>
     <div class="main-header">
       <h2>Профиль</h2>
@@ -225,7 +232,7 @@
 
     </div>
   </main>
-} @else {
+} @else if(!isSettings && !this.isForbidden) {
   <main>
     <div class="main-header">
       <h2>Профиль</h2>
@@ -287,5 +294,20 @@
 
       </form>
     </div>
+  </main>
+} @else {
+  <main>
+    <div class="main-header">
+      <h2>Подтвердите почту</h2>
+      <span>Отправьте писмо на почту и подтвердите её для активации аккаунта</span>
+    </div>
+    <div class="main-container">
+      <div class="email-verify">
+        <button (click)="verify()">отправить письмо</button>
+        <div>{{timer}}</div>
+      </div>
+        <button (click)="logout()" class="logout-btn">Выйти</button>
+    </div>
+
   </main>
 }

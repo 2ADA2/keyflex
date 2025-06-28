@@ -90,4 +90,17 @@ export class UserService {
       }
     )
   }
+
+  verifyEmail(){
+    return this.http.post(
+      this.baseApiUrl + "auth/request-verify-token",
+      {email: "ivankulik1978@gmail.com"},
+      {
+        headers: {
+          'Authorization': `Bearer ${this.cookieService.get("token")}`,
+          "ngrok-skip-browser-warning": "69420"
+        }
+      }
+    )
+  }
 }
